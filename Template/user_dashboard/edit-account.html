@@ -1,0 +1,126 @@
+{% extends 'user_dir/base.html' %}
+{% load static %}
+{% block content %}
+<section class="p-4 main-dashboard">
+<div class="row mx-auto">
+<div class="col-lg-3">
+    <div class="account-content">
+        <div class="account-dashboard">
+            <strong>ACCOUNT DASHBOARD </strong><span style="float:right; cursor:pointer;" ><i id="menuToggle" class="fas fa-minus"></i></span>
+        </div>
+        <div class="user-menu" id="UserMenu">
+            <ul>
+                <li class=""><a href="/myaccount">Account Dashboard</a></li>
+                <li class="nav-item"><a href="/address-book">Address Book</a></li>
+                <li class="nav-item current"><a href="/account_information">Account Information</a></li>
+                <li class="nav-item "><a href="orders.php">My Order</a></li>
+                <li class="nav-item"><a href="products-purchased.php">Previously Bought</a></li>
+                <li class="nav-item "><a href="wishlist.php">My Wishlist</a></li>
+                <li class="nav-item "><a href="customer-cards.php">My Saved Cards</a></li>
+
+            </ul>
+        </div>
+         <div class="account-dashboard">
+            <strong>MY ACCOUNT</strong>
+        </div>
+   </div>
+</div>
+<div class="col-lg-9">
+    <div>
+        <h3>EDIT ACCOUNT INFORMATION</h3>
+        <div class="account-info">
+            <!-- <h4 class="account-information">ACCOUNT INFORMATION</h4> -->
+            <form action="" method="post">
+            <div class="row">
+                <div class="col-lg-6">
+                <h4 class="acct-info">ACCOUNT INFORMATION</h4>
+                <div class="row">
+                    {% for cust in customer %}
+                <div class="col-md-6">
+
+                    <div class="contact-fields">
+                        <label for="fname">First Name</label><input type="text" name="" id="" value="{{ cust.first_name }}">
+                        <label for="phone">Phone Number</label><input type="number" name="" id="" required value="{{ cust.phone }}">
+
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="contact-fields">
+                        <label for="lname">Last Name</label><input type="text" value="{{ cust.last_name }}" name="" id="">
+
+                    </div>
+                    {% endfor %}
+                </div>
+                </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="row">
+                        <div class="col-md-12" >
+
+                    <div class="contact-fields" id="EmailAndPassword">
+                        <h4 class="acct-info">CHANGE EMAIL AND PASSWORD</h4>
+                        <label for="Email">Email</label><input type="email" name="" id="">
+                        <label for="pwd">Current Password</label><input type="password" name="" id="">
+                        <label for="pwd">New Password</label><input type="password" name="" id="">
+                        <label for="pwd">Confirm New Password</label><input type="password" name="" id="">
+
+
+                        </div>
+
+
+                    <div class="contact-fields" id="OnlyEmail">
+                        <h4 class="acct-info">CHANGE EMAIL</h4>
+                        <label for="Email">Email</label><input type="email" name="" id="">
+                        <label for="pwd">Current Password</label><input type="password" name="" id="">
+
+
+                    </div>
+
+
+                    <div class="contact-fields" id="OnlyPassword">
+                        <h4 class="acct-info">CHANGE PASSWORD</h4>
+                        <label for="pwd">Current Password</label><input type="password" name="" id="">
+                        <label for="pwd">New Password</label><input type="password" name="" id="">
+                        <label for="pwd">Confirm New Password</label><input type="password" name="" id="">
+
+                    </div>
+                </div>
+                    </div>
+                </div>
+
+                <div class="ctc-checkbox">
+                    <input type="checkbox" name="" id="checkEmail" value="changeEmailNo"> <label for=""> Change Email</label> <br>
+                     <input type="checkbox" name="" id="checkPwd" value="changePasswordNo"> <label for=""> Change Password</label>
+                </div>
+                <div class="contact-fields">
+
+                    <input type="submit" value="SAVE INFORMATION">
+                </div>
+
+            </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+</div>
+
+
+</div>
+<div class="row mx-auto">
+    <div class="col-lg-3">
+    <div class="account-content">
+
+         <div class="account-dashboard">
+            <strong>MY WISH LIST</strong>
+        </div>
+        <div class="compare-products">
+            <h6>You have no items in your wish list.</h6>
+        </div>
+   </div>
+</div>
+</div>
+</section>
+
+{% endblock %}

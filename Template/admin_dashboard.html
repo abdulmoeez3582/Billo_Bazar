@@ -1,0 +1,207 @@
+{% extends 'admin_dashboard_base.html' %}
+{% block content %}
+    {% load static %}
+
+    <!-- Start right Content here -->
+<!-- ============================================================== -->
+<div class="main-content" id="result">
+
+    <div class="page-content">
+        <div class="container-fluid">
+
+            <!-- start page title -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="page-title-box d-flex align-items-center justify-content-between">
+                        <h4 class="mb-0">Dashboard</h4>
+
+                        <div class="page-title-right">
+                            <ol class="breadcrumb m-0">
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Billo</a></li>
+                                <li class="breadcrumb-item active">Dashboard</li>
+                            </ol>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- end page title -->
+            <div class="row">
+                <div class="col-xl-8">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="d-flex">
+                                        <div class="flex-1 overflow-hidden">
+                                            <p class="text-truncate font-size-14 mb-2">Number of Sales</p>
+                                            <h4 class="mb-0">{{ Total_sale_items }}</h4>
+                                        </div>
+                                        <div class="text-primary ms-auto">
+                                            <i class="ri-stack-line font-size-24"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="d-flex">
+                                        <div class="flex-1 overflow-hidden">
+                                            <p class="text-truncate font-size-14 mb-2">Sales Revenue</p>
+                                            <h4 class="mb-0">Rs. {{ Total_sale_revenue }}</h4>
+                                        </div>
+                                        <div class="text-primary ms-auto">
+                                            <i class="ri-store-2-line font-size-24"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="d-flex">
+                                        <div class="flex-1 overflow-hidden">
+                                            <p class="text-truncate font-size-14 mb-2">Current Month Sale</p>
+                                            <h4 class="mb-0">Rs. {{ Current_month_sale }}</h4>
+                                        </div>
+                                        <div class="text-primary ms-auto">
+                                            <i class="ri-briefcase-4-line font-size-24"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end row -->
+                </div>
+
+                <div class="col-xl-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="float-end">
+                                <select class="form-select form-select-sm">
+                                    <option selected>Apr</option>
+                                    <option value="1">Mar</option>
+                                    <option value="2">Feb</option>
+                                    <option value="3">Jan</option>
+                                </select>
+                            </div>
+                            <h4 class="card-title mb-4">Sales Analytics</h4>
+
+                            <div id="donut-chart" class="apex-charts"></div>
+
+                            <div class="row">
+                                <div class="col-4">
+                                    <div class="text-center mt-4">
+                                        <p class="mb-2 text-truncate"><i
+                                                class="mdi mdi-circle text-primary font-size-10 me-1"></i> Product A</p>
+                                        <h5>42 %</h5>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="text-center mt-4">
+                                        <p class="mb-2 text-truncate"><i
+                                                class="mdi mdi-circle text-success font-size-10 me-1"></i> Product B</p>
+                                        <h5>26 %</h5>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="text-center mt-4">
+                                        <p class="mb-2 text-truncate"><i
+                                                class="mdi mdi-circle text-warning font-size-10 me-1"></i> Product C</p>
+                                        <h5>42 %</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+            <!-- end row -->
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="dropdown float-end">
+                                <a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    <i class="mdi mdi-dots-vertical"></i>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-end">
+                                    <!-- item-->
+                                    <a href="javascript:void(0);" class="dropdown-item">Sales Report</a>
+                                    <!-- item-->
+                                    <a href="javascript:void(0);" class="dropdown-item">Export Report</a>
+                                    <!-- item-->
+                                    <a href="javascript:void(0);" class="dropdown-item">Profit</a>
+                                    <!-- item-->
+                                    <a href="javascript:void(0);" class="dropdown-item">Action</a>
+                                </div>
+                            </div>
+
+                            <h4 class="card-title mb-4">Latest Transactions</h4>
+
+                            <div class="table-responsive">
+                                <table class="table table-centered datatable dt-responsive nowrap" data-bs-page-length="5"
+                                    style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                    <thead class="table-light">
+                                        <tr>
+
+                                            <th>Order ID</th>
+                                            <th>Date</th>
+                                            <th>Billing Name</th>
+                                            <th>Total</th>
+                                            <th>Payment Status</th>
+                                            <th style="width: 120px;">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for a in all_orders %}
+                                      <tr>
+                                            <td><a href="javascript: void(0);" class="text-dark fw-bold">{{a.order_num}}</a> </td>
+                                            <td>
+                                                {{ a.date}}
+                                            </td>
+                                            <td>{{ a.customer.first_name}} {{ a.customer.last_name }}</td>
+
+                                            <td>
+                                                Rs. {{a.price}}
+                                            </td>
+                                            <td>
+                                                <div class="badge badge-soft-success font-size-12">Paid</div>
+                                            </td>
+                                            <td id="tooltip-container41">
+                                                <a href="javascript:void(0);" class="me-3 text-primary"
+                                                    data-bs-container="#tooltip-container41" data-bs-toggle="tooltip"
+                                                    data-bs-placement="top" title="Edit"><i
+                                                        class="mdi mdi-pencil font-size-18"></i></a>
+                                                <a href="javascript:void(0);" class="text-danger"
+                                                    data-bs-container="#tooltip-container41" data-bs-toggle="tooltip"
+                                                    data-bs-placement="top" title="Delete"><i
+                                                        class="mdi mdi-trash-can font-size-18"></i></a>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end row -->
+        </div>
+
+    </div>
+    <!-- End Page-content -->
+</div>
+<!-- end main content-->
+
+{% endblock %}

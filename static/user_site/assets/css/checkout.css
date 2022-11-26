@@ -1,0 +1,241 @@
+section.checkoutSection .step-title {
+  border-bottom: 1px solid #ddd;
+}
+
+section.checkoutSection .step-title {
+  background-color: #3c135f;
+  padding: 12px 10px 12px 12px !important;
+  font-weight: bold !important;
+  font-size: 16px !important;
+  color: #ffffff !important;
+  text-transform: uppercase;
+  line-height: 1.1;
+}
+
+section.checkoutSection .step-title .fa {
+  display: inline-block !important;
+  font-size: 24px;
+  margin-right: 12px;
+  vertical-align: text-bottom;
+}
+
+section.checkoutSection .checkoutform label {
+  font-weight: 600;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  float: none;
+  width: 100%;
+  margin: 0 0 8px;
+}
+section.checkoutSection .checkoutform {
+  margin-bottom: 5px;
+}
+section.checkoutSection .checkoutform input[type="text"],
+section.checkoutSection .checkoutform input[type="number"] {
+  height: 40px;
+  color: #282828;
+  border-color: #ddd;
+  background-color: #fff;
+  font: 400 13px/1.35 Montserrat, Helvetica Neue, Verdana, Arial, sans-serif;
+  padding: 0 9px;
+  vertical-align: baseline;
+  width: 100%;
+  box-sizing: border-box;
+  background: #fff;
+  background-clip: padding-box;
+  border: 1px solid #c2c2c2;
+  border-radius: 1px;
+  outline: none;
+  margin: 0 0 10px 0;
+}
+
+section.checkoutSection .checkoutform select {
+  height: 40px;
+  color: #282828;
+  border-color: #ddd;
+  background-color: #fff;
+  font: 400 13px/1.35 Montserrat, Helvetica Neue, Verdana, Arial, sans-serif;
+  padding: 0 9px;
+  vertical-align: baseline;
+  width: 100%;
+  box-sizing: border-box;
+  background: #fff;
+  background-clip: padding-box;
+  border: 1px solid #c2c2c2;
+  border-radius: 1px;
+  outline: none;
+  margin: 0 0 10px 0;
+}
+
+section.checkoutSection .shippingaddress,
+section.checkoutSection .billingaddress {
+  margin-bottom: 25px;
+}
+section.checkoutSection .billingaddress {
+  margin-top: 50px;
+}
+
+section.checkoutSection .defaultaddress input[type="checkbox"] {
+  position: relative;
+  margin: 2px 5px 0 0;
+  top: 2px;
+}
+
+section.checkoutSection .paymentmethods input[type="radio"] {
+  position: relative;
+  top: 2px;
+  margin: 0 6px 0 0;
+}
+
+section.checkoutSection .paymentmethods p {
+  padding: 10px 20px;
+}
+
+section.checkoutSection .paymentmethods .paymentCards {
+  padding: 10px 20px;
+}
+
+section.checkoutSection .paymentmethods .paymentCards label {
+  display: block;
+  font-weight: bold;
+  margin: 8px 0;
+}
+section.checkoutSection .paymentmethods .paymentCards input {
+  display: block;
+  width: 100%;
+  outline: none;
+  border-color: #ddd;
+  padding: 0 9px;
+  border: 1px solid #c2c2c2;
+  border-radius: 1px;
+  height: 40px;
+}
+section.checkoutSection .paymentmethods .paymentCards select {
+  width: 49%;
+  border-color: #ddd;
+  padding: 0 9px;
+  border: 1px solid #c2c2c2;
+  border-radius: 1px;
+  height: 40px;
+  outline: none;
+}
+
+section.checkoutSection .paymentmethods .paymodes {
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  padding: 10px 5px;
+}
+
+section.checkoutSection .paymentmethods #codDes,
+section.checkoutSection .paymentmethods #banktransferDetails,
+section.checkoutSection .paymentmethods #creditcardDetails {
+  display: none;
+}
+
+section.checkoutSection .productsInCart p {
+  font-weight: 200;
+  font-size: 20px;
+}
+section.checkoutSection .productsInCart.orderconfirmation p {
+  font-weight: 700;
+  font-size: 24px;
+}
+section.checkoutSection .productTable {
+  overflow: auto;
+}
+section.checkoutSection .productTable table tr th {
+  text-align: center;
+  border: 1px solid #c2c2c2;
+  padding: 10px 0;
+}
+section.checkoutSection .productTable table tr td:nth-child(1) {
+  padding: 10px 5px;
+}
+section.checkoutSection .productTable table tr td img {
+  max-width: 100%;
+}
+section.checkoutSection .productTable table tr td a {
+  color: #000;
+}
+
+section.checkoutSection .productTable table tr td input[type="number"] {
+  width: 100%;
+  outline: none;
+  border: 1px solid #c2c2c2;
+  padding: 5px 27px;
+}
+section.checkoutSection .productTable table tr td input[type="button"] {
+  background: #e0dce3;
+  border: none;
+  padding: 6px;
+}
+
+section.checkoutSection
+  .productTable
+  table
+  tr
+  td
+  input[type="button"]:nth-child(1) {
+  position: absolute;
+  right: 19.2%;
+}
+
+section.checkoutSection
+  .productTable
+  table
+  tr
+  td
+  input[type="button"]:nth-child(3) {
+  position: absolute;
+  right: 11.8%;
+}
+
+section.checkoutSection .productTable table tr.forborder {
+  border: 1px solid #c2c2c2;
+}
+
+section.checkoutSection .productTable table tr td.fl-right {
+  font-size: smaller;
+}
+section.checkoutSection .productTable table tr.brbl {
+  border-left: 1px solid #c2c2c2;
+  border-right: 1px solid #c2c2c2;
+}
+
+section.checkoutSection .submitBtn input[type="submit"] {
+  background: #3c135f;
+  border: none;
+  color: #fff;
+  transition: 0.3s;
+  width: 100%;
+  padding: 15px 0;
+  margin-bottom: 25px;
+}
+section.checkoutSection .defaultAddresses {
+  margin: 20px 0;
+  padding: 10px 0px 10px 20px;
+  border: 2px solid #ccc;
+  /* border-radius: 10px; */
+}
+section.checkoutSection .defaultAddresses.notselected {
+  cursor: pointer;
+}
+section.checkoutSection .defaultAddresses.selected {
+  cursor: default;
+  border: 2px solid #3c135f;
+}
+section.checkoutSection .defaultAddresses span {
+  display: block;
+  padding: 5px 0;
+}
+section.checkoutSection .defaultAddresses.selected span.icon {
+  display: initial;
+}
+section.checkoutSection .defaultAddresses span.icon {
+  float: right;
+  background: #3c135f;
+  padding: 6px 10px;
+  color: #fff;
+  display: none;
+}

@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+{% load static %}
+{% load cart %}
+{% load custom_filter %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" data-noprefix />
+  <link rel="stylesheet" type="text/css" href="{% static 'user_site/assets/css/style.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'user_site/assets/css/bootstrap.min.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'user_site/assets/css/owlcarousel/owl.carousel.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'user_site/assets/css/owlcarousel/owl.carousel.min.css' %}" />
+  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" type="text/css" href="{% static 'user_site/assets/css/responsive.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'user_site/assets/css/header.css' %}" />
+  <!-- <link rel="stylesheet" href="{% static 'user_site/assets/css/animation.css' %}"> -->
+  <link rel="stylesheet" type="text/css" href="{% static 'user_site/assets/css/door.css' %}" />
+  <link rel="stylesheet" type="text/css" href="https://www.w3schools.com/w3css/4/w3.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css"
+    type="text/css" media="screen" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.0/animate.min.css"> -->
+    <Link rel="stylesheet" type="text/css" href="{% static 'user_site/assets/css/checkout.css' %}" />
+  <title>{% block title %}{% endblock %}</title>
+</head>
+
+<body>
+  <section class="topHeader p-1">
+    <div class="container">
+      <div class="row mx-auto">
+        <div class="col-md-5">
+          <div class="mainHeaderClass">
+            <a class="navbar-brand" href="/">
+              <img src="{% static 'user_site/assets/images/Logo-final-Copy.png' %}" id="headerLogo" width="100%" />
+            </a>
+          </div>
+        </div>
+        <div class="col-md-4 d-flex align-items-center justify-content-end mainHeaderClass">
+          <div class="topSection mainHeaderClass">
+            <span>Welcome to Billo Bazar</span>
+            <span> | </span>
+            <span><a href="/tracker_order">Track My Order</a></span>
+            <span> | </span>
+            <a href="/myaccount">My Account</a>
+              {% if request.session.customerAdmin != null %}
+              <span> | </span>
+              <a href="/logout">Logout</a>
+              {% endif %}
+          </div>
+        </div>
+        <div class="col-md-3 d-flex align-items-center mainHeaderClass">
+          <div class="navright">
+            <form action="" method="post">
+              <input type="search" name="search" id="" placeholder="Search here" />
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- <section>
+        <div class="container">
+            <div class="row mx-auto">
+                <div class="col-md-12 d-flex justify-content-center">
+                    <a class="navbar-brand" href="index.php">
+                        <img
+                            src="{% static 'user_site/assets/images/Logo-final-Copy.png'%}"
+                            id="headerLogo"
+                            width="100%"/>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </section> -->
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light" id="nav-bg-clr">
+      <div class="container desktopnav">
+        <!-- <a class="navbar-brand" href="index.php"
+            ><img
+              src="{% static 'user_site/assets/images/Logo-final-Copy.png'%}"
+              id="headerLogo"
+              width="100%"
+          /></a> -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+          aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav align-items-center">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" aria-expanded="false">
+                Shop
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <li>
+                  <a class="dropdown-item" href="logo-design.php">ALICE Training®: Active Shooter Response</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="graphic-design.php">FAQ’s</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="website-design.php">Reviews</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="website-development.php">ALICE National Traders</a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="our-pricing.php">Daily Deals</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" aria-expanded="false">
+                Gifts & Occasions
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <li>
+                  <a class="dropdown-item" href="logo-design.php">ALICE Training® Solutions</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="graphic-design.php">ALICE Virtual Training</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="website-design.php">Host a Class</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="website-development.php">Become an ALICE Training Host Organization</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="website-development.php">Safety & Security Assessment</a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="contact.php">Contact</a>
+            </li>
+
+            <!-- <li class="nav-item">
+            <a class="tw-link" href="login.php" title="Contact">Login</a>
+          </li>
+          <li class="nav-item" style=" width:max-content;">
+            <a class="help-link" href="support.php">Help / Support Center</a>
+          </li> -->
+          </ul>
+        </div>
+        <div class="">
+          <div class="navright">
+            <a href="javascript:;" id="ShoppingCart" ><i class="fas fa-shopping-cart" title="Cart"></i></a>
+{#            <span>{{ product|total_items }}</span>#}
+          </div>
+        </div>
+      <div id="isOpen" class="wrapper-top-cart">
+            <div class="close-icon-wrap">
+              <a href="javascript:void(0)" class="close-menu"> </a>
+            </div>
+            <h5 class="cart-heading">Shopping Cart:</h5>
+            <div id="dropdown-cart" class="dropdown-border">
+
+            {% if request.session.cart != null %}
+              <div class="has-items">
+                <ol class="mini-products-list">
+                    {% for p in product %}
+                  <li class="item" id="cart-item-41677158973590">
+                    <a href="/products/{{ p.id }}" class="product-image"><img src="{{p.image.url}}" alt="{{ p.name}}"/></a>
+                    <div class="product-details">
+                      <a href="javascript:void(0)" title="Remove" class="btn-remove">
+                        <svg class="icon-close" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background: new 0 0 512 512" xml:space="preserve">
+                          <g>
+                            <g>
+                              <polygon
+                                points="512,59.076 452.922,0 256,196.922 59.076,0 0,59.076 196.922,256 0,452.922 59.076,512 256,315.076 452.922,512
+			512,452.922 315.076,256 		"
+                              ></polygon>
+                            </g>
+                          </g>
+                          <g></g>
+                          <g></g>
+                          <g></g>
+                          <g></g>
+                          <g></g>
+                          <g></g>
+                          <g></g>
+                          <g></g>
+                          <g></g>
+                          <g></g>
+                          <g></g>
+                          <g></g>
+                          <g></g>
+                          <g></g>
+                          <g></g>
+                        </svg>
+                      </a>
+                      <p class="product-name">
+                        <a href="products/{{ p.id }}">
+                          <span class="lang1">{{ p.name}}</span>
+                        </a>
+                      </p>
+                      <div class="cart-collateral">
+                        <span class="qtt"> {{ p|cart_count:request.session.cart }} X </span>
+                        <span class="price">
+                              {% if p.saleprice <= 0 %}
+                          <span class="money">{{ p.price|currency }}</span>
+                            {% else %}
+                          <span class="money">{{ p.saleprice|currency }}</span>
+                            {% endif %}
+                        </span>
+                      </div>
+                    </div>
+                  </li>
+                    {% endfor %}
+                </ol>
+
+                <div class="summary">
+                  <div class="total">
+                    <span class="label">
+                      <span> Total: </span>
+                    </span>
+                    <span class="price"><span class="money">{{ product|cart_total:request.session.cart|currency }}</span></span>
+                  </div>
+
+                  <div class="actions">
+                    <button class="btn btn-checkout" style="display: none">
+                      Checkout Now
+                    </button>
+
+                    <a class="text-cart" href="/cart"> Or View Cart </a>
+                  </div>
+                </div>
+              </div>
+            {% else %}
+       <div class="no-items" style="display: block">
+                <p class="cart_empty">Your cart is currently empty.</p>
+                <div class="text-continue">
+                  <a class="btn btn-continue" href="/collections/all">
+                    Continue Shopping
+                  </a>
+                </div>
+              </div>
+            {% endif %}
+            </div>
+          </div>
+      </div>
+      <div class="hamburger-menu" id="small-screen-nav">
+        <div class="logo-mob"></div>
+        <input id="menu__toggle" type="checkbox" />
+        <label class="menu__btn" for="menu__toggle">
+          <span></span>
+        </label>
+
+        <ul id="menu" class="menu__box">
+          <div class="overlayBody"></div>
+          <div class="logo-m">
+            <!-- <input id="menu__toggle" type="checkbox" />
+          <label class="menu__btn" for="menu__toggle">
+            <span></span>
+          </label> -->
+          </div>
+          <li class="dropdown">
+            <a href="" class="dp-menu__item" data-bs-toggle="dropdown">Shop</a>
+            <a type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false"
+              style="float: right">
+              <i class="fas fa-angle-down"></i>
+            </a>
+            <ul class="dropdown-menu mobdropdown" aria-labelledby="dropdownMenuButton">
+              <li>
+                <a class="dropdown-item" href="logo-design.php">ALICE Training®: Active Shooter Response</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="graphic-design.php">FAQ’s</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="website-design.php">Reviews</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="website-development.php">ALICE National Traders</a>
+              </li>
+            </ul>
+          </li>
+          <li><a class="menu__item" href="contact.php">Daily Deals</a></li>
+          <li class="dropdown">
+            <a href="" class="dp-menu__item" data-bs-toggle="dropdown">Gifts & Occasions</a>
+            <a type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false"
+              style="float: right">
+              <i class="fas fa-angle-down"></i>
+            </a>
+            <ul class="dropdown-menu mobdropdown" aria-labelledby="dropdownMenuButton">
+              <li>
+                <a class="dropdown-item" href="logo-design.php">Schools</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="graphic-design.php">Workplaces</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="website-design.php">Law Enforcement</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="website-development.php">Hospitals & Healthcare Facilities</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="app-development.php">Churches & Houses of Worship</a>
+              </li>
+            </ul>
+          </li>
+
+          <li><a class="menu__item" href="contact.php">Contact</a></li>
+
+          <!-- <li class="nav-item mt-1">
+                <a class="tw-link" href="#" title="Contact">Login</a>
+              </li>
+              <li class="nav-item mt-2">
+                <a class="help-link-mob" href="#">Help / Support Center</a>
+              </li> -->
+        </ul>
+      </div>
+
+    </nav>
+
+  </header>
+
+{% block content %}
+{% endblock %}
+  <footer>
+    <div class="container">
+      <div class="row mx-auto">
+        <div class="col-md-4">
+          <div class="footer1 padding-10">
+            <a href=""><img src="{% static 'user_site/assets/images/Logo-final-Copy2.png'%}" width="100%" alt="" srcset="" /></a>
+            <p>
+              Subscribe to email alerts. We promise not to spam your inbox.
+            </p>
+            <div class="subscribeform">
+              <form action="" method="post">
+                <input type="search" name="" id="" placeholder="Email Address*" required /><input type="submit"
+                  value="Subscribe" />
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="footer-links padding-10">
+            <h4>SHOP</h4>
+            <ul>
+              <li><a href="">Necklace</a></li>
+              <li><a href="">Bangles</a></li>
+              <li><a href="">Jewellery</a></li>
+              <li><a href="">Necklace</a></li>
+              <li><a href="">Bangles</a></li>
+              <li><a href="">Jewellery</a></li>
+              <li><a href="">Gift Card</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="footer-links padding-10">
+            <h4>HELP</h4>
+            <ul>
+              <li><a href="">Track your Order</a></li>
+              <li><a href="">Warranty & Support</a></li>
+              <li><a href="">Return Policy</a></li>
+              <li><a href="">Bulk Orders</a></li>
+              <li><a href="">FAQ's</a></li>
+              <li><a href="">Jewellery</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="footer-links padding-10">
+            <h4>COMPANY</h4>
+            <ul>
+              <li><a href="">About Billo</a></li>
+              <li><a href="">Terms of Service</a></li>
+              <li><a href="">Privacy Policy</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="row mx-auto">
+        <div class="col-md-4">
+          <div class="social-icons">
+            <span><a href=""><i class="fab fa-twitter-square"></i></a></span>
+            <span><a href=""><i class="fab fa-facebook-square"></i></a></span>
+            <span><a href=""><i class="fab fa-youtube"></i></a></span>
+            <span><a href=""><i class="fab fa-instagram"></i></a></span>
+            <span><a href=""><i class="fab fa-linkedin"></i></a></span>
+          </div>
+          <!-- <div class="social-icons">
+              <img src="{% static 'user_site/assets/images/payment.png'%}" alt="" />
+            </div> -->
+        </div>
+        <div class="col-md-6"></div>
+      </div>
+    </div>
+  </footer>
+  <div class="footer-bottom p-4">
+    <div class="container">
+      <div class="row mx-auto">
+        <div class="col-md-6 d-flex justify-content-start align-items-center">
+          <div class="social-icons">
+            <p>Copyright 2022 Billo Bazar. All rights reserved.</p>
+          </div>
+        </div>
+        <div class="col-md-6 d-flex justify-content-end align-items-center">
+          <div class="social-icons">
+            <img src="{% static 'user_site/assets/images/payment.png'%}" alt="" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== footer end======================= -->
+  <script src="{% static 'user_site/assets/js/bootstrap.min.js'%}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.4.0/jquery-migrate.min.js"></script>
+  <script src="{% static 'user_site/assets/js/jquery.min.js'%}" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+  <script src="{% static 'user_site/assets/js/owlcarousel.js'%}"></script>
+  <script src="{% static 'user_site/assets/css/owlcarousel/owl.carousel.js'%}"></script>
+  <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+  <script src="{% static 'user_site/assets/js/slickcustom.js'%}"></script>
+{#  <script src="{% static 'user_site/assets/js/fancybox.js"></script>#}
+  <script type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+{#  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>#}
+<script src="//geodata.solutions/includes/countrystatecity.js"></script>
+  <script src="{% static 'user_site/assets/js/account.js'%}"></script>
+<script src="{% static 'user_site/assets/js/cart.js' %}"></script>
+</body>
+
+</html>

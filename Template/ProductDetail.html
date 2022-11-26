@@ -1,0 +1,105 @@
+{% extends 'admin_dashboard_base.html' %}
+{% block content %}
+     <div class="main-content" id="result">
+
+
+            <div class="page-content">
+                <div class="container-fluid">
+
+                    <!-- start page title -->
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                                <h4 class="mb-sm-0">Product Table</h4>
+
+                                <div class="page-title-right">
+                                    <ol class="breadcrumb m-0">
+                                        <li class="breadcrumb-item"><a href="javascript: void(0);">Ecommerce</a></li>
+                                        <li class="breadcrumb-item active">Product Table</li>
+                                    </ol>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end page title -->
+
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-body">
+
+                                    <h4 class="card-title">Product Details</h4>
+
+
+                                    <div class="table-rep-plugin">
+                                        <div class="table-responsive mb-0" data-pattern="priority-columns">
+                                            <table id="tech-companies-1" class="table">
+                                                <thead>
+                                                    <tr>
+
+                                                        <th data-priority="1">ID</th>
+                                                        <th data-priority="3">Category Name</th>
+                                                        <th data-priority="3">Product Name</th>
+                                                        <th data-priority="1">Feature</th>
+                                                        <th data-priority="1">Original Price</th>
+                                                        <th data-priority="1">Sale Price</th>
+                                                        <th data-priority="3">Image</th>
+                                                        <th data-priority="3">Edit</th>
+                                                        <th data-priority="6">Delete</th>
+
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                {% for data in products %}
+                                                    <tr>
+                                                        <td>{{ data.id }}</td>
+                                                        <td>{{ data.category.name }}</td>
+                                                        <td>{{ data.name }}</td>
+                                                        <td>
+                                                            {% if data.feature == 0 %}
+                                                            <a href="/feature/{{ data.id }}" class="btn btn-danger">
+                                                                {% else %}
+                                                                <a href="/feature/{{ data.id }}" class="btn btn-success">
+                                                                    {% endif %}
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16">
+  <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288L8 2.223l1.847 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.565.565 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
+</svg></a></td>
+                                                        <td>{{ data.price }}</td>
+                                                        <td>{{ data.saleprice }}</td>
+                                                        <td><img src="{{ data.image }}" alt="" srcset="" height="100px" width="100px"></td>
+                                                        <td><a href="" class="btn btn-success">Edit</a></td>
+                                                        <td><a href="/delete/{{ data.id }}" class="btn btn-danger">Delete</a></td>
+
+                                                    </tr>
+                                                {% endfor %}
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div> <!-- end col -->
+                    </div> <!-- end row -->
+
+                </div> <!-- container-fluid -->
+            </div>
+            <!-- End Page-content -->
+        </div>
+    <script>
+    $(document).ready(function () {
+        $("#feature").click(function () {
+            if($("#feature").is(':checked'))
+            {
+                $.ajax({
+                    method: 'Get',
+                    url: "feature_product"
+                })
+            }
+        })
+    })
+    </script>
+{% endblock %}

@@ -1,0 +1,167 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+
+    <head>
+
+        <meta charset="utf-8" />
+        <title>Login | Admin Dashboard </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
+        <meta content="Themesdesign" name="author" />
+        <!-- App favicon -->
+        <link rel="shortcut icon" href="{% static 'assets/images/favicon.ico'%}">
+
+        <!-- Bootstrap Css -->
+        <link href="{% static 'assets/css/bootstrap.min.css'%}" id="bootstrap-style" rel="stylesheet" type="text/css" />
+        <!-- Icons Css -->
+        <link href="{% static 'assets/css/icons.min.css'%}" rel="stylesheet" type="text/css" />
+        <!-- App Css-->
+        <link href="{% static 'assets/css/app.min.css'%}" id="app-style" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" href="{% static 'assets/css/style.css'%}">
+    </head>
+
+    <body class="auth-body-bg">
+        <div class="home-btn d-none d-sm-block">
+            <a href="/"><i class="mdi mdi-home-variant h2 text-white"></i></a>
+        </div>
+        <div>
+            <div class="container-fluid p-0 background-image">
+                <div class="row g-0 justify-content-center">
+                    <div class="col-lg-5">
+                        <div class="authentication-page-content p-4 d-flex align-items-center min-vh-100">
+                            <div class="w-100">
+                                <div class="row justify-content-center">
+                                    <div class="col-lg-9">
+                                        <div class="login-auth">
+                                            <div class="text-center">
+                                                <div>
+                                                    <!-- <a href="index.php" class="logo"><img src="assets/images/logo-dark.png" height="20" alt="logo"></a> -->
+                                                </div>
+                                                <h4 class="font-size-18 mt-4">Logo </h4>
+                                                <h4 class="font-size-18 mt-4">Welcome Back !</h4>
+                                            </div>
+
+                                            <div class="p-2 mt-3">
+                                                <form class="" action="auth_login" method="post">
+                                                    {% csrf_token %}
+                                                    <div class="mb-3 auth-form-group-custom mb-4">
+                                                        <i class="ri-user-2-line auti-custom-input-icon"></i>
+                                                        <label for="Email">Email</label>
+                                                        <input type="text" class="form-control" required id="username" placeholder="Enter Email" name="email">
+                                                    </div>
+
+                                                    <div class="mb-3 auth-form-group-custom mb-4">
+                                                        <i class="ri-lock-2-line auti-custom-input-icon"></i>
+                                                        <label for="Password">Password</label>
+                                                        <input type="password" name="pass" class="form-control" required id="userpassword" placeholder="Enter password">
+                                                    </div>
+
+
+                                                    <div class="mt-4 text-center">
+                                                        <!-- <button class="btn auth-btns w-md" type="submit">Log In</button> -->
+                                                        <input type="submit" class="btn auth-btns w-md" value="Log In">
+                                                    </div>
+
+                                                    <div class="mt-4 text-center">
+                                                        <a href="auth-recoverpw.php" class="text-muted"><i class="mdi mdi-lock me-1"></i> Forgot your password?</a>
+                                                    </div>
+                                                </form>
+                                            </div>
+
+                                            <!-- <div class="mt-5 text-center">
+                                                <p>Don't have an account ? <a href="auth-register.php" class="fw-medium text-primary"> Register </a> </p>
+                                                <p>© <script>document.write(new Date().getFullYear())</script> Created By Billo.com.pk</p>
+                                            </div> -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="col-lg-8">
+                        <div class="authentication-bg">
+                            <div class="bg-overlay"></div>
+                        </div>
+                    </div> -->
+
+                    <div class="col-lg-5">
+                        <div class="authentication-page-content p-4 d-flex align-items-center min-vh-100">
+                            <div class="w-100">
+                                <div class="row justify-content-center">
+                                    <div class="col-lg-9">
+                                        <div class="login-auth">
+                                            <div class="text-center auth-header">
+                                                <div>
+                                                    <!-- <a href="index.php" class="logo"><img src="assets/images/logo-dark.png" height="20" alt="logo"></a> -->
+                                                </div>
+                                                <h4 class="font-size-18 mt-4">Logo </h4>
+                                                <h4 class="font-size-18 mt-4">Register account</h4>
+                                            </div>
+
+                                            <div class="p-2 mt-3">
+                                                <form class="" action="auth_register" method="Post">
+                                                    {% csrf_token %}
+                                                    <div class="auth-form-group-custom mb-4">
+                                                        <i class="ri-mail-line auti-custom-input-icon"></i>
+                                                        <label for="useremail">First Name</label>
+                                                        <input type="text" class="form-control" name="fname" required id="useremail" placeholder="Enter First Name">
+                                                    </div>
+                                                    <div class="auth-form-group-custom mb-4">
+                                                        <i class="ri-mail-line auti-custom-input-icon"></i>
+                                                        <label for="useremail">Last Name</label>
+                                                        <input type="text" class="form-control" name="lname" required id="useremail" placeholder="Enter Last Name">
+                                                    </div>
+
+                                                    <div class="auth-form-group-custom mb-4">
+                                                        <i class="ri-user-2-line auti-custom-input-icon"></i>
+                                                        <label for="username">Email</label>
+                                                        <input type="email" name="email" class="form-control" required id="username" placeholder="Enter Email">
+                                                    </div>
+
+                                                    <div class="auth-form-group-custom mb-4">
+                                                        <i class="ri-lock-2-line auti-custom-input-icon"></i>
+                                                        <label for="userpassword">Password</label>
+                                                        <input type="password" class="form-control" required id="userpassword" name="pass" placeholder="Enter password">
+                                                    </div>
+
+
+                                                    <div class="text-center">
+
+                                                        <input type="submit" class="btn auth-btns w-md" value="Register">
+                                                    </div>
+
+                                                    <div class="mt-4 text-center">
+                                                        <p class="mb-0">By registering you agree to the Nazox <a href="#" class="text-primary">Terms of Use</a></p>
+                                                    </div>
+                                                </form>
+                                            </div>
+
+                                            <!-- <div class="mt-5 text-center">
+                                                <p>Already have an account ? <a href="auth-login.php" class="fw-medium text-primary"> Login</a> </p>
+                                                <p>© <script>document.write(new Date().getFullYear())</script> Nazox. Crafted with <i class="mdi mdi-heart text-danger"></i> by Themesdesign</p>
+                                            </div> -->
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- JAVASCRIPT -->
+        <script src="{% static 'assets/libs/jquery/jquery.min.js'%}"></script>
+        <script src="{% static 'assets/libs/bootstrap/js/bootstrap.bundle.min.js'%}"></script>
+        <script src="{% static 'assets/libs/metismenu/metisMenu.min.js'%}"></script>
+        <script src="{% static 'assets/libs/simplebar/simplebar.min.js'%}"></script>
+        <script src="{% static 'assets/libs/node-waves/waves.min.js'%}"></script>
+
+        <script src="{% static 'assets/js/app.js'%}"></script>
+
+    </body>
+</html>

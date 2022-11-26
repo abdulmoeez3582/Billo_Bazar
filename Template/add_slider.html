@@ -1,0 +1,22 @@
+{% extends 'admin_dashboard_base.html' %}
+{% block content %}
+         <div class="main-content" id="result">
+
+
+            <div class="page-content">
+                <div class="container-fluid">
+<form action="add_slider" method="post" enctype="multipart/form-data">
+ {% csrf_token %}
+<div class="form-group">
+  <label for="">Slider Image</label>
+  <input type="file" name="slider_img" id="">
+</div>
+
+<button type="submit" class="btn btn-primary">Submit</button>
+
+</form>
+
+                </div>
+            </div>
+         </div>
+{% endblock %}

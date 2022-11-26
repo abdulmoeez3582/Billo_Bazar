@@ -1,0 +1,76 @@
+{% extends 'user_dir/base.html' %}
+{% load static %}
+{% block content %}
+
+<section class="p-4 main-dashboard">
+
+        <div class="row mx-auto">
+            <div class="col-lg-3">
+                <div class="account-content">
+                    <div class="account-dashboard">
+                        <strong>ACCOUNT DASHBOARD</strong><span style="float:right; cursor:pointer;"><i id="menuToggle" class="fas fa-minus"></i></span>
+                    </div>
+                    <div class="user-menu" id="UserMenu">
+                        <ul>
+                <li class="current" ><a href="/myaccount">Account Dashboard</a></li>
+                <li class="nav-item "><a href="/address-book">Address Book</a></li>
+                <li class="nav-item"><a href="/account_information">Account Information</a></li>
+                <li class="nav-item "><a href="/myorder">My Order</a></li>
+                <li class="nav-item"><a href="products-purchased.php">Previously Bought</a></li>
+                <li class="nav-item "><a href="wishlist.php">My Wishlist</a></li>
+                <li class="nav-item "><a href="customer-cards.php">My Saved Cards</a></li>
+
+                        </ul>
+                    </div>
+                    <div class="account-dashboard">
+                        <strong>MY ORDER</strong>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-9">
+                <div>
+                    <h3>MY ORDER</h3>
+                    <div class="account-info">
+                        <h4 class="account-information">Order Information</h4>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="ctc-information">
+                                   <table class="table">
+                                        <tbody>
+                                        {% for o in order %}
+                                        <tr>
+                                        <td>{{ o.order_num }}</td>
+                                            <td scope="row">{{ o.product.name }}</td>
+                                            <td><img src="{{ o.product.image }}" class="img-fluid"/></td>
+                                            <td>{{ o.quantity }}</td>
+                                            <td>{{ o.price }}</td>
+                                            <td>{% widthratio o.quantity 1 o.price %}</td>
+                                            <td>{{ o.payment_method }}</td>
+                                            <td>{{ o.date }}</td>
+                                            <td>{{ o.shipping_address.address1 }}
+                                                {% if o.shipping_address.address2 != '' %}{{ o.shipping_address.address2 }}
+                                                {% endif %}{% if o.shipping_address.address3 != '' %}{{ o.shipping_address.address3 }}
+                                                {% endif %}{% if o.shipping_address.city != '' %}{{ o.shipping_address.city }}
+                                                {% endif %}{% if o.shipping_address.state != '' %}{{ o.shipping_address.state }}
+                                                {% endif %}{% if o.shipping_address.country != '' %}{{ o.shipping_address.country }}
+                                                {% endif %}</td>
+                                            <td>{{ o.billing_address }}</td>
+
+                                        </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                   </table>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+</section>
+
+{% endblock %}

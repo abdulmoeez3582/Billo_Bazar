@@ -1,0 +1,425 @@
+{% extends 'user_dir/base.html' %}
+{% load static %}
+{% load cart %}
+{% load custom_filter %}
+{% block content %}
+
+    <section class="productSingle">
+        <div class="container-fluid">
+            <div class="row mx-auto">
+                <div class="col-md-12">
+                    <div class="breadcrumb">
+                        <a href="/">Home</a>
+
+                        <span class="arrow">
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+              </span>
+
+                        <span class="lang1">Checkout</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row mx-auto">
+                <div class="col-md-12">
+                    <header class="page-header">
+                        <h2 data-translate="cart.general.title">Checkout</h2>
+                    </header>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- =======checkout started===== -->
+    <section class="checkoutSection">
+        <div class="container-fluid">
+            <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <form method="post" action="/add_new_address">
+                    {% csrf_token %}
+                <div class="row mx-auto mt-4">
+                                    <div class="col-md-6">
+                                        <div class="checkoutform">
+                                            <label for="">First Name <span class="text-danger"> *</span></label>
+                                            <input type="text" name="ship_fname" id=""/>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="checkoutform">
+                                            <label for="">Last Name <span class="text-danger"> *</span></label>
+                                            <input type="text" name="ship_lname" id=""/>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="checkoutform">
+                                            <label for="">Street Address </label>
+                                            <input type="text" name="ship_street" id=""/>
+                                            <label for="">Street Address: Line 1 </label>
+                                            <input type="text" name="ship_street1" id=""/>
+                                            <label for="">Street Address: Line 2 </label>
+                                            <input type="text" name="ship_street2" id=""/>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="checkoutform">
+                                            <label for="">Country <span class="text-danger"> *</span></label>
+                                            <select name="country" class="countries order-alpha presel-PK" id="countryId">
+                                                <option value="">Select Country</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="checkoutform">
+                                            <label for="">State/Province<span class="text-danger"> *</span></label>
+                                            <select name="state" class="states" id="stateId">
+                                                <option value="">Select State</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="checkoutform"><label for="">City <span class="text-danger"> *</span></label>
+                                            <select name="city" class="cities" id="cityId">
+                                                <option value="">Select City</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="checkoutform">
+                                            <label for="">Zipcode</label>
+                                            <input type="number" name="ship_zipcode" id=""/>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="checkoutform">
+                                            <label for="">Mobile Number<span class="text-danger"> *</span></label>
+                                            <input type="number" name="ship_phone" id=""/>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="checkoutform">
+                                            <input type="submit" value="Add Address" class="btn btn-primary">
+                                        </div>
+                                    </div>
+                                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+        <form action="/order" method="post">
+{% csrf_token %}
+            <div class="row mx-auto">
+                <div class="col-lg-6">
+                    <div class="shippingaddress">
+                        <div class="step-title" data-role="title">
+                            <i class="fas fa-home"></i>
+                            <span>Shipping Address</span>
+                        </div>
+
+                    <div class="row mx-auto">
+                <div class="col-md-12">
+                    {% for add in address %}
+                  <div class="defaultAddresses notselected" onclick="Selected(this)">
+                    <input type="checkbox" value="{{ add.id }}" name="existing_address" id=""
+                    >
+                    <span class="icon"><i class="fas fa-check"></i></span>
+                    <span>{{ add.first_name }} {{ add.last_name }}</span>
+                    <span>{{ add.address1 }} {{ add.address2 }}</span>
+                    <span>{{ add.address3 }} {{ add.country }} {{ add.state }} {{ add.city }}</span>
+                    <span>{{ add.zipcode }}</span>
+                  </div>
+                        {% endfor %}
+                </div>
+                    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modelId">
+  Add New Address
+</button>
+                    </div>
+                    <div class="row mx-auto">
+                        <div class="col-md-12">
+                            <div class="defaultaddress">
+                                <input type="checkbox" name="billing_same" value="is_billing_same"
+                                {% if 'is_billing_same' in 'billing_same' %} checked{% endif %}
+                                       id="billingAddressChange"/>
+                                <label for="billingAddressChange">My billing and shipping address are the same</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="billingaddress" id="billingaddress">
+                        <div class="step-title" data-role="title">
+                            <i class="fas fa-home"></i>
+                            <span>BILLING Address</span>
+                        </div>
+                                <div class="row mx-auto mt-4">
+                                    <div class="col-md-6">
+                                        <div class="checkoutform">
+                                            <label for="">First Name <span class="text-danger"> *</span></label>
+                                            <input type="text" name="bship_fname" id=""/>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="checkoutform">
+                                            <label for="">Last Name <span class="text-danger"> *</span></label>
+                                            <input type="text" name="bship_lname" id=""/>
+                                        </div>
+                                    </div>
+                                    {#                  <div class="col-md-12">#}
+                                    {#                    <div class="checkoutform">#}
+                                    {#                      <label for="">CRO Code If Applicable#}
+                                    {#                        <span class="text-danger"> *</span></label>#}
+                                    {#                      <input type="text" name="" id="" />#}
+                                    {#                    </div>#}
+                                    {#                  </div>#}
+                                    <div class="col-md-12">
+                                        <div class="checkoutform">
+                                            <label for="">Street Address </label>
+                                            <input type="text" name="bship_street" id=""/>
+                                            <label for="">Street Address: Line 1 </label>
+                                            <input type="text" name="bship_street1" id=""/>
+                                            <label for="">Street Address: Line 2 </label>
+                                            <input type="text" name="bship_street2" id=""/>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="checkoutform">
+                                            <label for="">Country <span class="text-danger"> *</span></label>
+                                            <select name="bcountry" class="countries order-alpha include-PK " id="countryId">
+                                                <option value="">Select Country</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="checkoutform">
+                                            <label for="">State/Province<span class="text-danger"> *</span></label>
+                                            <select name="bstate" class="states order-alpha" id="stateId">
+                                                <option value="">Select State</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="checkoutform"><label for="">City <span class="text-danger"> *</span></label>
+                                            <select name="bcity" class="cities order-alpha" id="cityId">
+                                                <option value="">Select City</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="checkoutform">
+                                            <label for="">Zipcode</label>
+                                            <input type="number" name="bship_zipcode" id=""/>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="checkoutform">
+                                            <label for="">Mobile Number<span class="text-danger"> *</span></label>
+                                                <input type="number" name="bship_phone" id=""/>
+                                        </div>
+                                    </div>
+                                </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="step-title" data-role="title">
+                        <i class="fas fa-credit-card"></i>
+                        <span>PAYMENT METHODS</span>
+                    </div>
+                    <div class="paymentmethods mt-4 mb-4">
+                        <div class="row mx-auto">
+                            <div class="col-md-12">
+                                <div class="paymodes">
+                                    <input type="radio" name="paymentmode" id="cod" value="COD"/>
+                                    <label for="cod">Cash On Delivery</label>
+                                    <p id="codDes">Pay Cash upon delivery</p>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="paymodes">
+                                    <input type="radio" name="paymentmode" id="banktransfer" value="BT"/>
+                                    <label for="banktransfer">Bank Transfer</label>
+                                    <p id="banktransferDetails">
+                                        Make your payment directly into our bank account. Please
+                                        use your Order ID as the payment reference. Your order
+                                        will not be shipped until the funds have cleared in our
+                                        account. Bank Transfer Instructions Please transfer the
+                                        total amount to the following bank account. <br/>
+                                        <br/>
+                                        Name: Meezan Bank Ltd (MEZ) <br/>
+                                        A/C Title: ************** <br/>
+                                        AC No: ************** <br/>
+                                        IBAN: ************** <br/>
+                                        <br/>
+                                        Once transferred the amount Kindly leave a message on
+                                        Whatsapp Along with the Order ID. <br/>
+                                        Whatsapp : +1(747) 255-2156
+                                    </p>
+                                </div>
+                            </div>
+                            {#                <div class="col-md-12">#}
+                            {#                  <div class="paymodes">#}
+                            {#                    <input type="radio" name="paymentmode" id="creditcard"/>#}
+                            {#                      <label for="creditcard">Credit Card</label>#}
+                            {#                    <div class="paymentCards" id="creditcardDetails">#}
+                            {#                      <form action="" method="post">#}
+                            {#                        <div class="row mx-auto">#}
+                            {#                          <div class="col-md-12">#}
+                            {#                            <div>#}
+                            {#                              <label for="credit">Credit Card Number</label>#}
+                            {#                              <input type="text" id="credit" />#}
+                            {#                              <span class="has-error"></span>#}
+                            {#                            </div>#}
+                            {#                          </div>#}
+                            {#                          <div class="col-md-8">#}
+                            {#                            <div>#}
+                            {#                              <label for="">Expiry Date</label>#}
+                            {##}
+                            {#                              <select name="" id="">#}
+                            {#                                <option value="">Month</option>#}
+                            {#                                <option value="1">01 - January</option>#}
+                            {#                                <option value="2">02 - February</option>#}
+                            {#                                <option value="3">03 - March</option>#}
+                            {#                                <option value="4">04 - April</option>#}
+                            {#                                <option value="5">05 - May</option>#}
+                            {#                                <option value="6">06 - June</option>#}
+                            {#                                <option value="7">07 - July</option>#}
+                            {#                                <option value="8">08 - August</option>#}
+                            {#                                <option value="9">09 - September</option>#}
+                            {#                                <option value="10">10 - October</option>#}
+                            {#                                <option value="11">11 - November</option>#}
+                            {#                                <option value="12">12 - December</option>#}
+                            {#                              </select>#}
+                            {#                              <select name="" id="">#}
+                            {#                                <option value="">Year</option>#}
+                            {#                                <option value="2022">2022</option>#}
+                            {#                                <option value="2023">2023</option>#}
+                            {#                                <option value="2024">2024</option>#}
+                            {#                                <option value="2025">2025</option>#}
+                            {#                                <option value="2026">2026</option>#}
+                            {#                                <option value="2027">2027</option>#}
+                            {#                                <option value="2028">2028</option>#}
+                            {#                                <option value="2029">2029</option>#}
+                            {#                                <option value="2030">2030</option>#}
+                            {#                                <option value="2031">2031</option>#}
+                            {#                                <option value="2032">2032</option>#}
+                            {#                              </select>#}
+                            {#                              <span class="has-error"></span>#}
+                            {#                            </div>#}
+                            {#                          </div>#}
+                            {#                          <div class="col-md-4">#}
+                            {#                            <div>#}
+                            {#                              <label for="">CVV</label>#}
+                            {#                              <input type="text" />#}
+                            {##}
+                            {#                              <span class="has-error"></span>#}
+                            {#                            </div>#}
+                            {#                          </div>#}
+                            {#                        </div>#}
+                            {#                      </form>#}
+                            {#                    </div>#}
+                            {#                  </div>#}
+                            {#                </div>#}
+                        </div>
+                    </div>
+
+                    <div class="step-title" data-role="title">
+                        <i class="fas fa-check-square"></i>
+                        <span>ORDER SUMMARY</span>
+                    </div>
+                    <div class="row mx-auto">
+                        <div class="col-md-12 mb-5">
+                            <div class="mt-4 mb-4 productsInCart">
+                                <p><span>x</span> Item in Cart</p>
+                            </div>
+                            <div class="productTable">
+                                <table width="100%">
+                                    <thead>
+                                    <tr>
+                                        <th width="60%">Product Name</th>
+                                        <th width="20%">Qty</th>
+                                        <th width="20%">Subtotal</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <!-- ============Product Row========== -->
+                                    {% for fc in product %}
+                                        <tr style="border: 1px solid #c2c2c2">
+                                            <td>
+                                                <img src="{{ fc.image }}" alt="" width="50" height="75"/>
+                                                <a href="">{{ fc.name }}</a>
+                                            </td>
+                                            <td style="text-align: center">
+                                                <div class=" d-flex justify-content-center align-items-center">
+                                                <form action="/checkout" method="post">
+                                                    {% csrf_token %}
+                                                    <input type="hidden" name="productId" value="{{ fc.id }}">
+                                                    <input type="hidden" name="remove" value="true">
+                                                    <input type="submit" value=" - " class="des button">
+                                                </form>
+                                                    </div>
+                                                <input class="qty" type="text" name=""
+                                                       value="{{ fc|cart_count:request.session.cart }}">
+                                                <form action="/checkout" method="post">
+                                                    {% csrf_token %}
+                                                    <input type="hidden" name="productId" value="{{ fc.id }}">
+                                                    <input type="submit" value=" + " class="inc button">
+                                                </form>
+
+                                            </td>
+                                            {% if fc.saleprice == 0 %}
+                                            <td style="text-align: center">PKR {{ fc.price }}</td>
+                                        {% else %}
+                                            <td style="text-align: center">PKR {{ fc.saleprice }}</td>
+                                        {% endif %}
+                                        </tr>
+                                    {% endfor %}
+                                    <!-- ============Product Row========== -->
+
+                                    <tr class="brbl">
+                                        <td></td>
+                                        <td class="fl-right">Cart Total</td>
+                                        <td class="fl-right">PKR {{ product|cart_total:request.session.cart }}</td>
+                                    </tr>
+{#                                    <tr class="brbl">#}
+{#                                        <td></td>#}
+{#                                        <td class="fl-right">Shipping</td>#}
+{#                                        <td class="fl-right">PKR 0</td>#}
+{#                                    </tr>#}
+{#                                    <tr class="brbl">#}
+{#                                        <td></td>#}
+{#                                        <td class="fl-right">Domestic - Shipping</td>#}
+{#                                    </tr>#}
+                                    <tr class="forborder">
+                                        <td></td>
+                                        <td class="fl-right" style="font-weight: bold; font-size: large">Order Total</td>
+                                        <td class="fl-right" style="font-weight: bold; font-size: large">PKR {{ product|cart_total:request.session.cart }}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="submitBtn">
+                                <input type="submit" value="PLACE ORDER"/>
+                                </form>
+                                <span class="text-danger"
+                                >PLEASE NOTE: Land Duty & Taxes to be borne by
+                    customer.</span
+                                >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    </form>
+    <!-- =======checkout end===== -->
+
+{% endblock %}

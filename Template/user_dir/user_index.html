@@ -1,0 +1,1405 @@
+{% extends 'user_dir/base.html' %}
+{% load cart %}
+{% load static %}
+{% block title %}
+Home | Billo
+{% endblock %}
+{% block content %}
+
+    <section class="headerthree">
+    <div class="container">
+      <div class="row mx-auto">
+        <div class="col-md-4">
+          <div class="d-flex justify-content-center align-items-center storeServices">
+            <h6><a href="javascript:;">Fast Delivery Nation Wide</a></h6>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="d-flex justify-content-center align-items-center storeServices">
+            <h6><a href="javascript:;">Free Returns InStore</a></h6>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="d-flex justify-content-center align-items-center storeServices">
+            <h6><a href="javascript:;">Customer Satisfaction</a></h6>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+      <!-- ============= Slider Section Start ================ -->
+  <section class="slider-top-section">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="owl-carousel owl-theme owl-carousel-home">
+          <div class="item carousel-item-img">
+            <div class="row">
+              <div class="col-md-12">
+                <div>
+                  <a href=""><img
+                      src="https://parkofideas.com/goldish/demo1/wp-content/uploads/2021/09/goldish-1513843201.jpg"
+                      alt="" srcset="" /></a>
+                  <div class="container-fluid">
+                    <div class="CarouselCaption">
+                      <h3>Goldish Dreams</h3>
+                      <h5>New Collection</h5>
+                      <a href="">Buy Now</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="item carousel-item-img">
+            <a href=""><img
+                src="https://parkofideas.com/goldish/demo1/wp-content/uploads/2021/09/goldish-1910529058-2048x1158.jpg"
+                alt="" srcset="" /></a>
+            <div class="container-fluid">
+              <div class="CarouselCaption">
+                <h3>Goldish Dreams</h3>
+                <h5>New Collection</h5>
+                <a href="">Buy Now</a>
+              </div>
+            </div>
+          </div>
+          <div class="item carousel-item-img">
+            <a href=""><img
+                src="https://parkofideas.com/goldish/demo1/wp-content/uploads/2021/09/goldish-1910574079-2048x1158.jpg"
+                alt="" srcset="" /></a>
+            <div class="container-fluid">
+              <div class="CarouselCaption">
+                <h3>Goldish Dreams</h3>
+                <h5>New Collection</h5>
+                <a href="">Buy Now</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- ============= Slider Section End ================ -->
+
+  <!-- ==================After Header Start======================= -->
+      <section class="afterHeader">
+    <div class="container">
+      <div class="row mx-auto">
+        <div class="col-md-4">
+          <div class="services_items text-center">
+            <img src="{% static 'user_site/assets/images/370_435_MID_BANNER1_1024x.webp'%}" alt="" />
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="services_items text-center">
+            <img src="{% static 'user_site/assets/images/370_435_MID_BANNER2_1024x.webp'%}" alt="" />
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="services_items text-center">
+            <img src="{% static 'user_site/assets/images/370_435_MID_BANNER_1024x.webp'%}" alt="" />
+          </div>
+        </div>
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+          <div class="brand-description">
+            <p>
+              At Billo Bazar, we are dedicated to helping you get the most out
+              of every moment. Forged upon the fundamentals of hard work,
+              risk-taking and listening to our customers. It’s through our
+              relentless pursuit of innovation that we’ve become what we are
+              today.
+            </p>
+          </div>
+        </div>
+        <div class="col-md-2"></div>
+      </div>
+    </div>
+  </section>
+  <!-- ==================After Header End======================= -->
+
+  <!-- ==========rings collection started============ -->
+
+  <section class="our-collection">
+    <div class="container">
+      <div class="widget-title">
+        <h3 class="box-title">
+          <span class="lang1">FEATURE COLLECTION</span>
+        </h3>
+
+        <p class="desc-text">
+          <span class="lang1">New Style</span>
+        </p>
+      </div>
+    </div>
+  </section>
+  <section class="best-sellers">
+    <div class="container">
+      <div class="row mx-auto">
+      {% for pro in products %}
+          {% if pro.feature == 1 %}
+        <div class="col-md-4">
+          <div class="inner-card">
+            <a href="products/{{ pro.id }}">
+              <div class="image-section">
+                <div class="product-label">
+                  <strong>NEW</strong>
+                  <br />
+                  <strong class="discount">35%</strong>
+                </div>
+                <img src="{{pro.image}}" alt="" srcset="" />
+
+                <!-- <form action="" method="post">
+                      <input type="hidden" name="" />
+                      <input type="submit" value="Add To Cart" />
+                    </form> -->
+              </div>
+            </a>
+            <div class="product-info">
+              <div class="title">
+                <a href="products/{{ pro.id }}">
+                  <h6>{{ pro.name}}</h6>
+                </a>
+              </div>
+              <div style="margin: 4px">
+                  {% if pro.saleprice != 0 %}
+                <span class="saleprice">Rs.{{ pro.price}}</span>
+                <span class="price">Rs.{{ pro.saleprice}}</span>
+                  {% else %}
+                  <span class="price">Rs.{{ pro.price}}</span>
+                  {% endif %}
+              </div>
+            </div>
+            <a href="products/{{ pro.id }}">
+              <div class="image-section bgDarkdemo">
+                <div class="">
+                  <div class="product-label">
+                    <strong>NEW</strong>
+                    <br />
+                    <strong class="discount">35%</strong>
+
+                    <!-- <span>
+                        <span>35%</span>
+                      </span> -->
+                  </div>
+                </div>
+{#                    {% if pro|in_cart:request.session.cart %}#}
+{#                                        <div class="row">#}
+{#                                            <form action="/" method="post"  class="col-2">#}
+{#                                                {% csrf_token %}#}
+{#                                                <input type="hidden" name="productId" value="{{ pro.id }}">#}
+{#                                                <input type="hidden" name="remove" value="true">#}
+{#                                                <input type="submit" value=" - " class="btn btn-secondary btn-block">#}
+{#                                            </form>#}
+{#                                            <div class="text-center col-7">{{ pro|cart_count:request.session.cart }} in cart</div>#}
+{#                                            <form action="/" method="post" class="col-2">#}
+{#                                                {% csrf_token %}#}
+{#                                                <input type="hidden" name="productId" value="{{ pro.id }}">#}
+{#                                                <input type="submit" value=" + " class="btn btn-secondary btn-block">#}
+{#                                            </form>#}
+{##}
+{#                                        </div>#}
+{#                                    {% else %}#}
+                 <form action="/#{{ pro.id }}" method="post">
+            {% csrf_token %}
+            <input type="hidden" value="{{ pro.id }}" name="productId">
+            <input type="submit" class="add_to_cart_btn" value="Add to Cart">
+        </form>
+                        {% endif %}
+              </div>
+            </a>
+          </div>
+        </div>
+{#          {% endif %}#}
+      {% endfor %}
+
+        <!-- <div><h3>1</h3></div>
+      <div><h3>2</h3></div>
+      <div><h3>3</h3></div>
+      <div><h3>4</h3></div>
+      <div><h3>5</h3></div>
+      <div><h3>6</h3></div> -->
+      </div>
+      <div class="row mx-auto p-4">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+          <div class="text-center show-products">
+            <a href="">SHOW MORE</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- ==========rings collection end============ -->
+
+  <!-- ================ Just Launched started============== -->
+
+  <section class="our-collection">
+    <div class="container">
+      <div class="widget-title">
+        <h3 class="box-title">
+          <span class="lang1">Just Launched</span>
+        </h3>
+
+        <p class="desc-text">
+          <span class="lang1">Crafting Your Curiosity, Making You A Style Sensation</span>
+        </p>
+      </div>
+    </div>
+  </section>
+  <section class="best-sellers">
+    <div class="container">
+      <div class="slick" data-slick='{"slidesToShow": 3, "slidesToScroll": 1}'>
+        {% for jl in justlaunch %}
+          <div class="row mx-auto">
+          <div class="col-md-12">
+            <div class="inner-card">
+              <a href="products/{{ jl.id }}">
+                <div class="image-section">
+                  <div class="product-label">
+                    <strong>NEW</strong>
+                    <br />
+                    <strong class="discount">35%</strong>
+
+                    <!-- <span>
+                        <span>35%</span>
+                      </span> -->
+                  </div>
+                  <img src="{{jl.image}}" alt="" srcset="" />
+
+                  <!-- <form action="" method="post">
+                      <input type="hidden" name="" />
+                      <input type="submit" value="Add To Cart" />
+                    </form> -->
+                </div>
+              </a>
+              <div class="product-info">
+                <div class="title">
+                  <a href="products/{{ jl.id }}">
+                    <h6>{{ jl.name}}</h6>
+                  </a>
+                </div>
+                <div style="margin: 4px">
+                  {% if jl.saleprice != 0 %}
+                <span class="saleprice">Rs.{{ jl.saleprice}}</span>
+                <span class="price">Rs.{{ jl.price}}</span>
+                  {% else %}
+                  <span class="price">Rs.{{ jl.price}}</span>
+                  {% endif %}
+                </div>
+              </div>
+              <a href="products/{{ jl.id }}">
+                <div class="image-section bgDarkdemo">
+                  <div class="">
+                    <div class="product-label">
+                      <strong>NEW</strong>
+                      <br />
+                      <strong class="discount">35%</strong>
+
+                      <!-- <span>
+                        <span>35%</span>
+                      </span> -->
+                    </div>
+                  </div>
+                       <form action="/#{{ jl.id }}" method="post">
+            {% csrf_token %}
+            <input type="hidden" value="{{ jl.id }}" name="productId">
+            <input type="submit" class="add_to_cart_btn" value="Add to Cart">
+        </form>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <!-- ================ Just Launch end============== -->
+  <!-- ================ Category 1 started============== -->
+    {% if category_1 != None %}
+  <section class="our-collection">
+    <div class="container">
+      <div class="widget-title">
+        <h3 class="box-title">
+            {% for c in category1 %}
+          <span class="lang1">{{ c }}</span>
+            {% endfor %}
+        </h3>
+
+        <p class="desc-text">
+          <span class="lang1">925 STERLING SILVER</span>
+        </p>
+      </div>
+    </div>
+  </section>
+  <section class="best-sellers">
+    <div class="container">
+      <div class="slick" data-slick='{"slidesToShow": 3, "slidesToScroll": 1}'>
+       {% for  cat_1 in category_1%}
+          <div class="row mx-auto">
+          <div class="col-md-12">
+            <div class="inner-card">
+              <a href="products/{{ cat_1.id }}">
+                <div class="image-section">
+                  <div class="product-label">
+                    <strong>NEW</strong>
+                    <br />
+                    <strong class="discount">35%</strong>
+
+                    <!-- <span>
+                        <span>35%</span>
+                      </span> -->
+                  </div>
+                  <img src="{{cat_1.image}}" alt="" srcset="" />
+
+                  <!-- <form action="" method="post">
+                      <input type="hidden" name="" />
+                      <input type="submit" value="Add To Cart" />
+                    </form> -->
+                </div>
+              </a>
+              <div class="product-info">
+                <div class="title">
+                  <a href="products/{{ cat_1.id }}">
+                    <h6>{{ cat_1.name}}</h6>
+                  </a>
+                </div>
+                <div style="margin: 4px">
+                  {% if pendant.saleprice != 0 %}
+                <span class="saleprice">Rs.{{ cat_1.saleprice}}</span>
+                <span class="price">Rs.{{ cat_1.price}}</span>
+                  {% else %}
+                  <span class="price">Rs.{{ cat_1.price}}</span>
+                  {% endif %}
+                </div>
+              </div>
+              <a href="products/{{ cat_1.id }}">
+                <div class="image-section bgDarkdemo">
+                  <div class="">
+                    <div class="product-label">
+                      <strong>NEW</strong>
+                      <br />
+                      <strong class="discount">35%</strong>
+
+                      <!-- <span>
+                        <span>35%</span>
+                      </span> -->
+                    </div>
+                  </div>
+                       <form action="/#{{ cat_1.id }}" method="post">
+            {% csrf_token %}
+            <input type="hidden" value="{{ cat_1.id }}" name="productId">
+            <input type="submit" class="add_to_cart_btn" value="Add to Cart">
+        </form>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+        <!-- <div><h3>1</h3></div>
+      <div><h3>2</h3></div>
+      <div><h3>3</h3></div>
+      <div><h3>4</h3></div>
+      <div><h3>5</h3></div>
+      <div><h3>6</h3></div> -->
+      </div>
+    </div>
+   <div class="row mx-auto p-4">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+          <div class="text-center show-products">
+            <a href="">SHOW MORE</a>
+          </div>
+        </div>
+      </div>
+  </section>
+    {% endif %}
+  <!-- ================ Category 1 end============== -->
+  <!-- ================ Category 2 started============== -->
+    {% if category_2 != None %}
+  <section class="our-collection">
+    <div class="container">
+      <div class="widget-title">
+        <h3 class="box-title">
+            {% for c in category2 %}
+          <span class="lang1">{{ c }}</span>
+            {% endfor %}
+        </h3>
+
+        <p class="desc-text">
+          <span class="lang1">925 STERLING SILVER</span>
+        </p>
+      </div>
+    </div>
+  </section>
+  <section class="best-sellers">
+    <div class="container">
+      <div class="slick" data-slick='{"slidesToShow": 3, "slidesToScroll": 1}'>
+       {% for  cat_2 in category_2%}
+          <div class="row mx-auto">
+          <div class="col-md-12">
+            <div class="inner-card">
+              <a href="products/{{ cat_2.id }}">
+                <div class="image-section">
+                  <div class="product-label">
+                    <strong>NEW</strong>
+                    <br />
+                    <strong class="discount">35%</strong>
+
+                    <!-- <span>
+                        <span>35%</span>
+                      </span> -->
+                  </div>
+                  <img src="{{cat_2.image}}" alt="" srcset="" />
+
+                  <!-- <form action="" method="post">
+                      <input type="hidden" name="" />
+                      <input type="submit" value="Add To Cart" />
+                    </form> -->
+                </div>
+              </a>
+              <div class="product-info">
+                <div class="title">
+                  <a href="products/{{ cat_2.id }}">
+                    <h6>{{ cat_2.name}}</h6>
+                  </a>
+                </div>
+                <div style="margin: 4px">
+                  {% if cat_2.saleprice != 0 %}
+                <span class="saleprice">Rs.{{ cat_2.saleprice}}</span>
+                <span class="price">Rs.{{ cat_2.price}}</span>
+                  {% else %}
+                  <span class="price">Rs.{{ cat_2.price}}</span>
+                  {% endif %}
+                </div>
+              </div>
+              <a href="products/{{ cat_2.id }}">
+                <div class="image-section bgDarkdemo">
+                  <div class="">
+                    <div class="product-label">
+                      <strong>NEW</strong>
+                      <br />
+                      <strong class="discount">35%</strong>
+
+                      <!-- <span>
+                        <span>35%</span>
+                      </span> -->
+                    </div>
+                  </div>
+                       <form action="/#{{ cat_2.id }}" method="post">
+            {% csrf_token %}
+            <input type="hidden" value="{{ cat_2.id }}" name="productId">
+            <input type="submit" class="add_to_cart_btn" value="Add to Cart">
+        </form>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+        <!-- <div><h3>1</h3></div>
+      <div><h3>2</h3></div>
+      <div><h3>3</h3></div>
+      <div><h3>4</h3></div>
+      <div><h3>5</h3></div>
+      <div><h3>6</h3></div> -->
+      </div>
+    </div>
+   <div class="row mx-auto p-4">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+          <div class="text-center show-products">
+            <a href="">SHOW MORE</a>
+          </div>
+        </div>
+      </div>
+  </section>
+        {% endif %}
+  <!-- ================ Category 2 end============== -->
+
+  <!-- ================ Category 3 started============== -->
+    {% if category_3 != None %}
+  <section class="our-collection">
+    <div class="container">
+      <div class="widget-title">
+        <h3 class="box-title">
+            {% for c in category3 %}
+          <span class="lang1">{{ c }}</span>
+            {% endfor %}
+        </h3>
+
+        <p class="desc-text">
+          <span class="lang1">925 STERLING SILVER</span>
+        </p>
+      </div>
+    </div>
+  </section>
+  <section class="best-sellers">
+    <div class="container">
+      <div class="slick" data-slick='{"slidesToShow": 3, "slidesToScroll": 1}'>
+       {% for  cat_3 in category_3%}
+          <div class="row mx-auto">
+          <div class="col-md-12">
+            <div class="inner-card">
+              <a href="products/{{ cat_3.id }}">
+                <div class="image-section">
+                  <div class="product-label">
+                    <strong>NEW</strong>
+                    <br />
+                    <strong class="discount">35%</strong>
+
+                    <!-- <span>
+                        <span>35%</span>
+                      </span> -->
+                  </div>
+                  <img src="{{cat_3.image}}" alt="" srcset="" />
+
+                  <!-- <form action="" method="post">
+                      <input type="hidden" name="" />
+                      <input type="submit" value="Add To Cart" />
+                    </form> -->
+                </div>
+              </a>
+              <div class="product-info">
+                <div class="title">
+                  <a href="products/{{ cat_3.id }}">
+                    <h6>{{ cat_3.name}}</h6>
+                  </a>
+                </div>
+                <div style="margin: 4px">
+                  {% if cat_3.saleprice != 0 %}
+                <span class="saleprice">Rs.{{ cat_3.saleprice}}</span>
+                <span class="price">Rs.{{ cat_3.price}}</span>
+                  {% else %}
+                  <span class="price">Rs.{{ cat_3.price}}</span>
+                  {% endif %}
+                </div>
+              </div>
+              <a href="products/{{ cat_3.id }}">
+                <div class="image-section bgDarkdemo">
+                  <div class="">
+                    <div class="product-label">
+                      <strong>NEW</strong>
+                      <br />
+                      <strong class="discount">35%</strong>
+
+                      <!-- <span>
+                        <span>35%</span>
+                      </span> -->
+                    </div>
+                  </div>
+                       <form action="/#{{ cat_3.id }}" method="post">
+            {% csrf_token %}
+            <input type="hidden" value="{{ cat_3.id }}" name="productId">
+            <input type="submit" class="add_to_cart_btn" value="Add to Cart">
+        </form>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+        <!-- <div><h3>1</h3></div>
+      <div><h3>2</h3></div>
+      <div><h3>3</h3></div>
+      <div><h3>4</h3></div>
+      <div><h3>5</h3></div>
+      <div><h3>6</h3></div> -->
+      </div>
+    </div>
+   <div class="row mx-auto p-4">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+          <div class="text-center show-products">
+            <a href="">SHOW MORE</a>
+          </div>
+        </div>
+      </div>
+  </section>
+    {% endif %}
+  <!-- ================ Category 3 end============== -->
+
+  <!-- ================ Category 4 started============== -->
+    {% if category_4 != None %}
+  <section class="our-collection">
+    <div class="container">
+      <div class="widget-title">
+        <h3 class="box-title">
+            {% for c in category4 %}
+          <span class="lang1">{{ c }}</span>
+            {% endfor %}
+        </h3>
+
+        <p class="desc-text">
+          <span class="lang1">925 STERLING SILVER</span>
+        </p>
+      </div>
+    </div>
+  </section>
+  <section class="best-sellers">
+    <div class="container">
+      <div class="slick" data-slick='{"slidesToShow": 3, "slidesToScroll": 1}'>
+       {% for  cat_4 in category_4%}
+          <div class="row mx-auto">
+          <div class="col-md-12">
+            <div class="inner-card">
+              <a href="products/{{ cat_4.id }}">
+                <div class="image-section">
+                  <div class="product-label">
+                    <strong>NEW</strong>
+                    <br />
+                    <strong class="discount">35%</strong>
+
+                    <!-- <span>
+                        <span>35%</span>
+                      </span> -->
+                  </div>
+                  <img src="{{cat_4.image}}" alt="" srcset="" />
+
+                  <!-- <form action="" method="post">
+                      <input type="hidden" name="" />
+                      <input type="submit" value="Add To Cart" />
+                    </form> -->
+                </div>
+              </a>
+              <div class="product-info">
+                <div class="title">
+                  <a href="products/{{ cat_4.id }}">
+                    <h6>{{ cat_4.name}}</h6>
+                  </a>
+                </div>
+                <div style="margin: 4px">
+                  {% if cat_4.saleprice != 0 %}
+                <span class="saleprice">Rs.{{ cat_4.saleprice}}</span>
+                <span class="price">Rs.{{ cat_4.price}}</span>
+                  {% else %}
+                  <span class="price">Rs.{{ cat_4.price}}</span>
+                  {% endif %}
+                </div>
+              </div>
+              <a href="products/{{ cat_4.id }}">
+                <div class="image-section bgDarkdemo">
+                  <div class="">
+                    <div class="product-label">
+                      <strong>NEW</strong>
+                      <br />
+                      <strong class="discount">35%</strong>
+
+                      <!-- <span>
+                        <span>35%</span>
+                      </span> -->
+                    </div>
+                  </div>
+                       <form action="/#{{ cat_4.id }}" method="post">
+            {% csrf_token %}
+            <input type="hidden" value="{{ cat_4.id }}" name="productId">
+            <input type="submit" class="add_to_cart_btn" value="Add to Cart">
+        </form>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+        <!-- <div><h3>1</h3></div>
+      <div><h3>2</h3></div>
+      <div><h3>3</h3></div>
+      <div><h3>4</h3></div>
+      <div><h3>5</h3></div>
+      <div><h3>6</h3></div> -->
+      </div>
+    </div>
+   <div class="row mx-auto p-4">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+          <div class="text-center show-products">
+            <a href="">SHOW MORE</a>
+          </div>
+        </div>
+      </div>
+  </section>
+    {% endif %}
+  <!-- ================ Category 4 end============== -->
+
+   <!-- ================ Category 5 started============== -->
+    {% if category_5 != None %}
+  <section class="our-collection">
+    <div class="container">
+      <div class="widget-title">
+        <h3 class="box-title">
+            {% for c in category5 %}
+          <span class="lang1">{{ c }}</span>
+            {% endfor %}
+        </h3>
+
+        <p class="desc-text">
+          <span class="lang1">925 STERLING SILVER</span>
+        </p>
+      </div>
+    </div>
+  </section>
+  <section class="best-sellers">
+    <div class="container">
+      <div class="slick" data-slick='{"slidesToShow": 3, "slidesToScroll": 1}'>
+       {% for  cat_5 in category_5%}
+          <div class="row mx-auto">
+          <div class="col-md-12">
+            <div class="inner-card">
+              <a href="products/{{ cat_5.id }}">
+                <div class="image-section">
+                  <div class="product-label">
+                    <strong>NEW</strong>
+                    <br />
+                    <strong class="discount">35%</strong>
+
+                    <!-- <span>
+                        <span>35%</span>
+                      </span> -->
+                  </div>
+                  <img src="{{cat_5.image}}" alt="" srcset="" />
+
+                  <!-- <form action="" method="post">
+                      <input type="hidden" name="" />
+                      <input type="submit" value="Add To Cart" />
+                    </form> -->
+                </div>
+              </a>
+              <div class="product-info">
+                <div class="title">
+                  <a href="products/{{ cat_5.id }}">
+                    <h6>{{ cat_5.name}}</h6>
+                  </a>
+                </div>
+                <div style="margin: 4px">
+                  {% if cat_5.saleprice != 0 %}
+                <span class="saleprice">Rs.{{ cat_5.saleprice}}</span>
+                <span class="price">Rs.{{ cat_5.price}}</span>
+                  {% else %}
+                  <span class="price">Rs.{{ cat_5.price}}</span>
+                  {% endif %}
+                </div>
+              </div>
+              <a href="products/{{ cat_5.id }}">
+                <div class="image-section bgDarkdemo">
+                  <div class="">
+                    <div class="product-label">
+                      <strong>NEW</strong>
+                      <br />
+                      <strong class="discount">35%</strong>
+
+                      <!-- <span>
+                        <span>35%</span>
+                      </span> -->
+                    </div>
+                  </div>
+                       <form action="/#{{ cat_5.id }}" method="post">
+            {% csrf_token %}
+            <input type="hidden" value="{{ cat_5.id }}" name="productId">
+            <input type="submit" class="add_to_cart_btn" value="Add to Cart">
+        </form>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+        <!-- <div><h3>1</h3></div>
+      <div><h3>2</h3></div>
+      <div><h3>3</h3></div>
+      <div><h3>4</h3></div>
+      <div><h3>5</h3></div>
+      <div><h3>6</h3></div> -->
+      </div>
+    </div>
+   <div class="row mx-auto p-4">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+          <div class="text-center show-products">
+            <a href="">SHOW MORE</a>
+          </div>
+        </div>
+      </div>
+  </section>
+    {% endif %}
+  <!-- ================ Category 5 end============== -->
+ <!-- ================ Category 6 started============== -->
+    {% if category_6 != None %}
+  <section class="our-collection">
+    <div class="container">
+      <div class="widget-title">
+        <h3 class="box-title">
+            {% for c in category6 %}
+          <span class="lang1">{{ c }}</span>
+            {% endfor %}
+        </h3>
+
+        <p class="desc-text">
+          <span class="lang1">925 STERLING SILVER</span>
+        </p>
+      </div>
+    </div>
+  </section>
+  <section class="best-sellers">
+    <div class="container">
+      <div class="slick" data-slick='{"slidesToShow": 3, "slidesToScroll": 1}'>
+       {% for  cat_6 in category_6%}
+          <div class="row mx-auto">
+          <div class="col-md-12">
+            <div class="inner-card">
+              <a href="products/{{ cat_6.id }}">
+                <div class="image-section">
+                  <div class="product-label">
+                    <strong>NEW</strong>
+                    <br />
+                    <strong class="discount">35%</strong>
+
+                    <!-- <span>
+                        <span>35%</span>
+                      </span> -->
+                  </div>
+                  <img src="{{cat_6.image}}" alt="" srcset="" />
+
+                  <!-- <form action="" method="post">
+                      <input type="hidden" name="" />
+                      <input type="submit" value="Add To Cart" />
+                    </form> -->
+                </div>
+              </a>
+              <div class="product-info">
+                <div class="title">
+                  <a href="products/{{ cat_6.id }}">
+                    <h6>{{ cat_6.name}}</h6>
+                  </a>
+                </div>
+                <div style="margin: 4px">
+                  {% if cat_6.saleprice != 0 %}
+                <span class="saleprice">Rs.{{ cat_6.saleprice}}</span>
+                <span class="price">Rs.{{ cat_6.price}}</span>
+                  {% else %}
+                  <span class="price">Rs.{{ cat_6.price}}</span>
+                  {% endif %}
+                </div>
+              </div>
+              <a href="products/{{ cat_6.id }}">
+                <div class="image-section bgDarkdemo">
+                  <div class="">
+                    <div class="product-label">
+                      <strong>NEW</strong>
+                      <br />
+                      <strong class="discount">35%</strong>
+
+                      <!-- <span>
+                        <span>35%</span>
+                      </span> -->
+                    </div>
+                  </div>
+                       <form action="/#{{ cat_6.id }}" method="post">
+            {% csrf_token %}
+            <input type="hidden" value="{{ cat_6.id }}" name="productId">
+            <input type="submit" class="add_to_cart_btn" value="Add to Cart">
+        </form>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+        <!-- <div><h3>1</h3></div>
+      <div><h3>2</h3></div>
+      <div><h3>3</h3></div>
+      <div><h3>4</h3></div>
+      <div><h3>5</h3></div>
+      <div><h3>6</h3></div> -->
+      </div>
+    </div>
+   <div class="row mx-auto p-4">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+          <div class="text-center show-products">
+            <a href="">SHOW MORE</a>
+          </div>
+        </div>
+      </div>
+  </section>
+        {% endif %}
+  <!-- ================ Category 6 end============== -->
+  <!-- ================ Category 7 started============== -->
+    {% if category_7 != None %}
+  <section class="our-collection">
+    <div class="container">
+      <div class="widget-title">
+        <h3 class="box-title">
+            {% for c in category2 %}
+          <span class="lang1">{{ c }}</span>
+            {% endfor %}
+        </h3>
+
+        <p class="desc-text">
+          <span class="lang1">925 STERLING SILVER</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="best-sellers">
+    <div class="container">
+      <div class="slick" data-slick='{"slidesToShow": 3, "slidesToScroll": 1}'>
+       {% for  cat_7 in category_7%}
+          <div class="row mx-auto">
+          <div class="col-md-12">
+            <div class="inner-card">
+              <a href="products/{{ cat_7.id }}">
+                <div class="image-section">
+                  <div class="product-label">
+                    <strong>NEW</strong>
+                    <br />
+                    <strong class="discount">35%</strong>
+
+                    <!-- <span>
+                        <span>35%</span>
+                      </span> -->
+                  </div>
+                  <img src="{{cat_7.image}}" alt="" srcset="" />
+
+                  <!-- <form action="" method="post">
+                      <input type="hidden" name="" />
+                      <input type="submit" value="Add To Cart" />
+                    </form> -->
+                </div>
+              </a>
+              <div class="product-info">
+                <div class="title">
+                  <a href="products/{{ cat_7.id }}">
+                    <h6>{{ cat_7.name}}</h6>
+                  </a>
+                </div>
+                <div style="margin: 4px">
+                  {% if cat_7.saleprice != 0 %}
+                <span class="saleprice">Rs.{{ cat_7.saleprice}}</span>
+                <span class="price">Rs.{{ cat_7.price}}</span>
+                  {% else %}
+                  <span class="price">Rs.{{ cat_7.price}}</span>
+                  {% endif %}
+                </div>
+              </div>
+              <a href="products/{{ cat_7.id }}">
+                <div class="image-section bgDarkdemo">
+                  <div class="">
+                    <div class="product-label">
+                      <strong>NEW</strong>
+                      <br />
+                      <strong class="discount">35%</strong>
+
+                      <!-- <span>
+                        <span>35%</span>
+                      </span> -->
+                    </div>
+                  </div>
+                       <form action="/#{{ cat_7.id }}" method="post">
+            {% csrf_token %}
+            <input type="hidden" value="{{ cat_7.id }}" name="productId">
+            <input type="submit" class="add_to_cart_btn" value="Add to Cart">
+        </form>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+        <!-- <div><h3>1</h3></div>
+      <div><h3>2</h3></div>
+      <div><h3>3</h3></div>
+      <div><h3>4</h3></div>
+      <div><h3>5</h3></div>
+      <div><h3>6</h3></div> -->
+      </div>
+    </div>
+  </section>
+    {% endif %}
+  <!-- ================ Category 7 end============== -->
+
+  <!-- ================ Category 8 started============== -->
+    {% if category_8 != None %}
+  <section class="our-collection">
+    <div class="container">
+      <div class="widget-title">
+        <h3 class="box-title">
+            {% for c in category8 %}
+          <span class="lang1">{{ c }}</span>
+            {% endfor %}
+        </h3>
+
+        <p class="desc-text">
+          <span class="lang1">925 STERLING SILVER</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="best-sellers">
+    <div class="container">
+      <div class="slick" data-slick='{"slidesToShow": 3, "slidesToScroll": 1}'>
+       {% for  cat_8 in category_8%}
+          <div class="row mx-auto">
+          <div class="col-md-12">
+            <div class="inner-card">
+              <a href="products/{{ cat_8.id }}">
+                <div class="image-section">
+                  <div class="product-label">
+                    <strong>NEW</strong>
+                    <br />
+                    <strong class="discount">35%</strong>
+
+                    <!-- <span>
+                        <span>35%</span>
+                      </span> -->
+                  </div>
+                  <img src="{{cat_8.image}}" alt="" srcset="" />
+
+                  <!-- <form action="" method="post">
+                      <input type="hidden" name="" />
+                      <input type="submit" value="Add To Cart" />
+                    </form> -->
+                </div>
+              </a>
+              <div class="product-info">
+                <div class="title">
+                  <a href="products/{{ cat_8.id }}">
+                    <h6>{{ cat_8.name}}</h6>
+                  </a>
+                </div>
+                <div style="margin: 4px">
+                  {% if cat_8.saleprice != 0 %}
+                <span class="saleprice">Rs.{{ cat_8.saleprice}}</span>
+                <span class="price">Rs.{{ cat_8.price}}</span>
+                  {% else %}
+                  <span class="price">Rs.{{ cat_8.price}}</span>
+                  {% endif %}
+                </div>
+              </div>
+              <a href="products/{{ cat_8.id }}">
+                <div class="image-section bgDarkdemo">
+                  <div class="">
+                    <div class="product-label">
+                      <strong>NEW</strong>
+                      <br />
+                      <strong class="discount">35%</strong>
+
+                      <!-- <span>
+                        <span>35%</span>
+                      </span> -->
+                    </div>
+                  </div>
+                       <form action="/#{{ cat_8.id }}" method="post">
+            {% csrf_token %}
+            <input type="hidden" value="{{ cat_8.id }}" name="productId">
+            <input type="submit" class="add_to_cart_btn" value="Add to Cart">
+        </form>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+        <!-- <div><h3>1</h3></div>
+      <div><h3>2</h3></div>
+      <div><h3>3</h3></div>
+      <div><h3>4</h3></div>
+      <div><h3>5</h3></div>
+      <div><h3>6</h3></div> -->
+      </div>
+    </div>
+   <div class="row mx-auto p-4">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+          <div class="text-center show-products">
+            <a href="">SHOW MORE</a>
+          </div>
+        </div>
+      </div>
+  </section>
+    {% endif %}
+  <!-- ================ Category 8 end============== -->
+
+  <!-- ================ Category 9 started============== -->
+    {% if category_9 != None %}
+  <section class="our-collection">
+    <div class="container">
+      <div class="widget-title">
+        <h3 class="box-title">
+            {% for c in category9 %}
+          <span class="lang1">{{ c }}</span>
+            {% endfor %}
+        </h3>
+
+        <p class="desc-text">
+          <span class="lang1">925 STERLING SILVER</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="best-sellers">
+    <div class="container">
+      <div class="slick" data-slick='{"slidesToShow": 3, "slidesToScroll": 1}'>
+       {% for  cat_9 in category_9%}
+          <div class="row mx-auto">
+          <div class="col-md-12">
+            <div class="inner-card">
+              <a href="products/{{ cat_9.id }}">
+                <div class="image-section">
+                  <div class="product-label">
+                    <strong>NEW</strong>
+                    <br />
+                    <strong class="discount">35%</strong>
+
+                    <!-- <span>
+                        <span>35%</span>
+                      </span> -->
+                  </div>
+                  <img src="{{cat_9.image}}" alt="" srcset="" />
+
+                  <!-- <form action="" method="post">
+                      <input type="hidden" name="" />
+                      <input type="submit" value="Add To Cart" />
+                    </form> -->
+                </div>
+              </a>
+              <div class="product-info">
+                <div class="title">
+                  <a href="products/{{ cat_9.id }}">
+                    <h6>{{ cat_9.name}}</h6>
+                  </a>
+                </div>
+                <div style="margin: 4px">
+                  {% if cat_9.saleprice != 0 %}
+                <span class="saleprice">Rs.{{ cat_9.saleprice}}</span>
+                <span class="price">Rs.{{ cat_9.price}}</span>
+                  {% else %}
+                  <span class="price">Rs.{{ cat_9.price}}</span>
+                  {% endif %}
+                </div>
+              </div>
+              <a href="products/{{ cat_9.id }}">
+                <div class="image-section bgDarkdemo">
+                  <div class="">
+                    <div class="product-label">
+                      <strong>NEW</strong>
+                      <br />
+                      <strong class="discount">35%</strong>
+
+                      <!-- <span>
+                        <span>35%</span>
+                      </span> -->
+                    </div>
+                  </div>
+                       <form action="/#{{ cat_9.id }}" method="post">
+            {% csrf_token %}
+            <input type="hidden" value="{{ cat_9.id }}" name="productId">
+            <input type="submit" class="add_to_cart_btn" value="Add to Cart">
+        </form>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+        <!-- <div><h3>1</h3></div>
+      <div><h3>2</h3></div>
+      <div><h3>3</h3></div>
+      <div><h3>4</h3></div>
+      <div><h3>5</h3></div>
+      <div><h3>6</h3></div> -->
+      </div>
+    </div>
+  </section>
+    {% endif %}
+  <!-- ================ Category 9 end============== -->
+
+   <!-- ================ Category 10 started============== -->
+    {% if category_10 != None %}
+  <section class="our-collection">
+    <div class="container">
+      <div class="widget-title">
+        <h3 class="box-title">
+            {% for c in category10 %}
+          <span class="lang1">{{ c }}</span>
+            {% endfor %}
+        </h3>
+
+        <p class="desc-text">
+          <span class="lang1">925 STERLING SILVER</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="best-sellers">
+    <div class="container">
+      <div class="slick" data-slick='{"slidesToShow": 3, "slidesToScroll": 1}'>
+       {% for  cat_10 in category_10%}
+          <div class="row mx-auto">
+          <div class="col-md-12">
+            <div class="inner-card">
+              <a href="products/{{ cat_10.id }}">
+                <div class="image-section">
+                  <div class="product-label">
+                    <strong>NEW</strong>
+                    <br />
+                    <strong class="discount">35%</strong>
+
+                    <!-- <span>
+                        <span>35%</span>
+                      </span> -->
+                  </div>
+                  <img src="{{cat_10.image}}" alt="" srcset="" />
+
+                  <!-- <form action="" method="post">
+                      <input type="hidden" name="" />
+                      <input type="submit" value="Add To Cart" />
+                    </form> -->
+                </div>
+              </a>
+              <div class="product-info">
+                <div class="title">
+                  <a href="products/{{ cat_10.id }}">
+                    <h6>{{ cat_10.name}}</h6>
+                  </a>
+                </div>
+                <div style="margin: 4px">
+                  {% if cat_10.saleprice != 0 %}
+                <span class="saleprice">Rs.{{ cat_10.saleprice}}</span>
+                <span class="price">Rs.{{ cat_10.price}}</span>
+                  {% else %}
+                  <span class="price">Rs.{{ cat_10.price}}</span>
+                  {% endif %}
+                </div>
+              </div>
+              <a href="products/{{ cat_10.id }}">
+                <div class="image-section bgDarkdemo">
+                  <div class="">
+                    <div class="product-label">
+                      <strong>NEW</strong>
+                      <br />
+                      <strong class="discount">35%</strong>
+
+                      <!-- <span>
+                        <span>35%</span>
+                      </span> -->
+                    </div>
+                  </div>
+                       <form action="/#{{ cat_10.id }}" method="post">
+            {% csrf_token %}
+            <input type="hidden" value="{{ cat_10.id }}" name="productId">
+            <input type="submit" class="add_to_cart_btn" value="Add to Cart">
+        </form>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+        <!-- <div><h3>1</h3></div>
+      <div><h3>2</h3></div>
+      <div><h3>3</h3></div>
+      <div><h3>4</h3></div>
+      <div><h3>5</h3></div>
+      <div><h3>6</h3></div> -->
+      </div>
+    </div>
+  </section>
+    {% endif %}
+  <!-- ================ Category 10 end============== -->
+  <!-- =========About started======== -->
+  <section class="our-collection">
+    <div class="container">
+      <div class="widget-title">
+        <h3 class="box-title">
+          <span class="lang1">ABOUT BILLO BAZAR</span>
+        </h3>
+      </div>
+      <div class="about-para">
+        <p class="text-center">
+          At Amerah, we are dedicated to helping you get the most out of every
+          moment. Forged upon the fundamentals of hard work, risk-taking and
+          listening to our customers. It’s through our relentless pursuit of
+          innovation that we’ve become what we are today. We have been
+          operating for over One Year and we have managed to build up a
+          reputable establishment online. We have a great team and aim to grow
+          our business more and more, offering our customers the best
+          Combination of Jewelry available.
+        </p>
+      </div>
+    </div>
+  </section>
+  <!-- =========About end======== -->
+
+  <!-- ============== insta=============== -->
+  <section class="our-collection">
+    <div class="container">
+      <div class="widget-title">
+        <h3 class="box-title">
+          <span class="lang1">#BILLOBAZAR</span>
+        </h3>
+      </div>
+      <div class="about-para">
+        <div class="row">
+          <div class="col-md-3">
+            <div class="img-insta w3-animate-opacity">
+              <img src="{% static 'user_site/assets/images/1628767268918_640x.webp'%}" alt="" />
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="img-insta">
+              <img src="{% static 'user_site/assets/images/1628767269014_640x.webp'%}" alt="" />
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="img-insta">
+              <img src="{% static 'user_site/assets/images/1628767269035_640x.webp'%}" alt="" />
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="img-insta">
+              <img src="{% static 'user_site/assets/images/1628767269072_640x.webp'%}" alt="" />
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="img-insta w3-animate-opacity">
+              <img src="{% static 'user_site/assets/images/1628767268918_640x.webp'%}" alt="" />
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="img-insta">
+              <img src="{% static 'user_site/assets/images/1628767269014_640x.webp'%}" alt="" />
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="img-insta">
+              <img src="{% static 'user_site/assets/images/1628767269035_640x.webp'%}" alt="" />
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="img-insta">
+              <img src="{% static 'user_site/assets/images/1628767269072_640x.webp'%}" alt="" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row mx-auto p-5">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+          <div class="text-center social-follow">
+            <a href="">FOLLOW US ON INSTAGRAM</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- ============== insta=============== -->
+
+
+
+{% endblock %}

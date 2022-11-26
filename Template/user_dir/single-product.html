@@ -1,0 +1,200 @@
+{% extends 'user_dir/base.html' %}
+{% block content %}
+    {% load  static %}
+    {% load cart %}
+    {% load custom_filter %}
+    <!-- Product Area start========= -->
+    {% for p in products %}
+    <section class="SingleProd">
+        <div class="container">
+            <div class="row mx-auto">
+                <div class="col-md-6">
+                    <div class="prodImage">
+                        <div class="zoomArea">
+                            <img id="NZoomImg" data-NZoomscale="2"
+                                src="{{ p.image.url }}"
+                                alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6  product-shop horizontal">
+
+                    <div class="has-btn">
+
+
+                    </div>
+                    <header class="product-title ">
+                        <h2 itemprop="name">
+
+                            <span class="lang1">{{ p.name}}</span>
+
+
+                        </h2>
+
+                    </header>
+
+                    <div>
+
+                        <div class="short-description">
+
+
+                            Gender:&nbsp;Women
+
+
+                            Main Stone:&nbsp;Zircon
+                            Fine or Fashion:&nbsp;Fine
+                            Setting Type:&nbsp;Prong Setting
+                            Side Stone:&nbsp;Other Natural material
+                            Item Type:&nbsp;Rings
+                            Shape\pattern:&nbsp;Ball Style:&nbsp;Cute/Romantic Rin...
+                        </div>
+                            <input type="hidden" name="form_type" value="product"><input type="hidden" name="utf8"
+                                value="✓">
+                            <div id="product-variants">
+                                <input type="hidden" name="id" value="41677126664342">
+                            </div>
+                            <div class="prices">
+                            {% if p.saleprice != 0 %}
+                                <span class="compare-price">
+                                    <span class="money">₨ {{ p.price}}</span>
+                                </span>
+                                <span class="price on-sale" itemprop="price">
+                                    <span class="money">₨ {{ p.saleprice}}</span>
+                                </span>
+                                {% else %}
+                                <span class="price on-sale">
+                                    <span class="money">₨ {{ p.price}}</span>
+                                </span>
+                                {% endif %}
+                                <input type="hidden" id="product_regular_price" name="product_regular_price"
+                                    value="249900">
+                            </div>
+                            <div class="chart-group ">
+
+                                <label for="quantity" data-translate="cart.label.quantity">
+                                    Quantity
+                                </label>
+                                <div class="qty-group">
+                                     <form action="/single_page_cart" method="post">
+                                         {% csrf_token %}
+                                         <input type="hidden" name="productId" value="{{ p.id }}">
+                                         <input type="hidden" name="remove" value="true">
+                                         <input type="submit" value=" - " class="des button">
+                                     </form>
+                                    <input type="text" class="number" id="quantity" name="quantity" value="{{ p|cart_count:request.session.cart }}">
+                                      <form action="/single_page_cart" method="post">
+                                          {% csrf_token %}
+                                          <input type="hidden" name="productId" value="{{ p.id }}">
+                                          <input type="submit" value=" + " class="inc button">
+                                      </form>
+                                </div>
+                            </div>
+                            <div class="total-price">
+                                <label data-translate="cart.general.subtotal">
+                                    Subtotal:
+                                </label>
+                                <span class="total-money"><span class="money">{{ product|cart_total:request.session.cart|currency }}</span></span>
+                            </div>
+                            <div class="addToCart">
+                                <form action="/single_page_cart" method="post">
+                                {% csrf_token %}
+                                <input type="hidden" value="{{ p.id }}" name="productId">
+                                <input type="submit" name="add" class="btn"
+                                    data-translate="products.product.add_to_cart" id="product-add-to-cart"
+                                    value="Add to Cart">
+                                </form>
+{#                                <div class="groups-btn">#}
+{##}
+{#                                    <div class="btn-checkout ">#}
+{##}
+{#                                        <div data-shopify="payment-button" data-has-selling-plan="false"#}
+{#                                            class="shopify-payment-button">#}
+{#                                            <div>#}
+{#                                                <div>#}
+{#                                                    <div>#}
+{#                                                        <button type="button"#}
+{#                                                            class="shopify-payment-button__button shopify-payment-button__button--unbranded _2ogcW-Q9I-rgsSkNbRiJzA _2EiMjnumZ6FVtlC7RViKtj _2-dUletcCZ2ZL1aaH0GXxT"#}
+{#                                                            id="BuyNow">Buy it now</button>#}
+{#                                                        <div>#}
+{#                                                            <div></div>#}
+{#                                                        </div>#}
+{#                                                        <div></div>#}
+{#                                                    </div>#}
+{#                                                </div>#}
+{#                                            </div>#}
+{#                                        </div>#}
+{#                                    </div>#}
+{#                                </div>#}
+                            </div>
+                        <div id="kaching-icon-block-3f1ea9f6-cb0f-49ec-a0d3-9f25dd5517de" class="kaching-icon-block--container" style="display: flex; flex: 0 1 0%; width: 100%; justify-content: center; position: relative; line-height: 1.5; word-break: break-word; background-color: rgb(255, 255, 255); margin-top: 10px; margin-bottom: 10px; padding-top: 10px; padding-bottom: 10px;" data-block-id="3f1ea9f6-cb0f-49ec-a0d3-9f25dd5517de">
+                            <style>.kaching-icon-block--link:hover {opacity: 0.8;}  #kaching-icon-block-3f1ea9f6-cb0f-49ec-a0d3-9f25dd5517de .kaching-icon-block--icon-container {flex-basis: 0;}  @media screen and (max-width: 500px) {  #kaching-icon-block-3f1ea9f6-cb0f-49ec-a0d3-9f25dd5517de .kaching-icon-block--icon-container {flex-basis: 0;}  }  #kaching-icon-block-3f1ea9f6-cb0f-49ec-a0d3-9f25dd5517de .kaching-icon-block--icon svg {height: 100%;width: 100%;}  #kaching-icon-block-3f1ea9f6-cb0f-49ec-a0d3-9f25dd5517de .kaching-icon-block--icon g {clip-path: none;}</style>
+                            <div class="kaching-icon-block--wrapper"
+                                style="display: flex; flex: 1 1 0%; justify-content: space-between; flex-wrap: wrap; max-width: 1000px;">
+                                <div class="kaching-icon-block--icon-container"
+                                    style="display: flex; flex-grow: 1; flex-shrink: 0; justify-content: center;">
+                                    <div class="kaching-icon-block--icon"
+                                        style="display: flex; flex-direction: column; flex: 1 1 0%; align-items: center; text-align: center; padding: 10px;">
+                                        <div
+                                            style="display: flex; flex-shrink: 0; align-items: center; height: 40px; width: 40px; fill: rgb(0, 0, 0); margin-bottom: 8px;">
+                                            <img src="https://d2kmd27hg6le17.cloudfront.net/storefront_api/icons/65aa9681-96b3-4d0d-a6a4-1d8c4c4544b9?color=rgba(0,%200,%200,%201)"
+                                                alt="7-Days Money Back Guarantee"
+                                                style="height: 100%; width: 100%; object-fit: contain; display: inline-block; border-radius: 0px;">
+                                        </div>
+                                        <div
+                                            style="display: flex; flex-direction: column; text-align: center; margin-left: 0px;">
+                                            <span class="kaching-icon-block--icon-title"
+                                                style="font-size: 13px; color: rgb(0, 0, 0); font-style: normal; font-weight: bold;">7-Days
+                                                Money Back Guarantee</span><span
+                                                class="kaching-icon-block--icon-subtitle"
+                                                style="font-size: 10px; color: rgb(0, 0, 0); font-style: normal; font-weight: normal;"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="kaching-icon-block--icon-container"
+                                    style="display: flex; flex-grow: 1; flex-shrink: 0; justify-content: center;">
+                                    <div class="kaching-icon-block--icon"
+                                        style="display: flex; flex-direction: column; flex: 1 1 0%; align-items: center; text-align: center; padding: 10px;">
+                                        <div
+                                            style="display: flex; flex-shrink: 0; align-items: center; height: 40px; width: 40px; fill: rgb(0, 0, 0); margin-bottom: 8px;">
+                                            <img src="https://d2kmd27hg6le17.cloudfront.net/storefront_api/icons/e02aff93-3974-4c3b-99ac-19e38a5b05e6?color=rgba(0,%200,%200,%201)"
+                                                alt="7-Days Exchange "
+                                                style="height: 100%; width: 100%; object-fit: contain; display: inline-block; border-radius: 0px;">
+                                        </div>
+                                        <div
+                                            style="display: flex; flex-direction: column; text-align: center; margin-left: 0px;">
+                                            <span class="kaching-icon-block--icon-title"
+                                                style="font-size: 13px; color: rgb(0, 0, 0); font-style: normal; font-weight: bold;">7-Days
+                                                Exchange </span><span class="kaching-icon-block--icon-subtitle"
+                                                style="font-size: 10px; color: rgb(0, 0, 0); font-style: normal; font-weight: normal;"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="kaching-icon-block--icon-container"
+                                    style="display: flex; flex-grow: 1; flex-shrink: 0; justify-content: center;">
+                                    <div class="kaching-icon-block--icon"
+                                        style="display: flex; flex-direction: column; flex: 1 1 0%; align-items: center; text-align: center; padding: 10px;">
+                                        <div
+                                            style="display: flex; flex-shrink: 0; align-items: center; height: 40px; width: 40px; fill: rgb(0, 0, 0); margin-bottom: 8px;">
+                                            <img src="https://d2kmd27hg6le17.cloudfront.net/storefront_api/icons/eab1c4e4-df3c-4ec7-bec0-86d4acc88704?color=rgba(0,%200,%200,%201)"
+                                                alt="Certified Jewelry"
+                                                style="height: 100%; width: 100%; object-fit: contain; display: inline-block; border-radius: 0px;">
+                                        </div>
+                                        <div
+                                            style="display: flex; flex-direction: column; text-align: center; margin-left: 0px;">
+                                            <span class="kaching-icon-block--icon-title"
+                                                style="font-size: 13px; color: rgb(0, 0, 0); font-style: normal; font-weight: bold;">Certified
+                                                Jewelry</span><span class="kaching-icon-block--icon-subtitle"
+                                                style="font-size: 10px; color: rgb(0, 0, 0); font-style: normal; font-weight: normal;"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Product Area End========= -->
+{% endfor %}
+{% endblock %}

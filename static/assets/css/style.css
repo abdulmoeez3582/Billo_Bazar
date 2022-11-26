@@ -1,0 +1,47 @@
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+.background-image{
+    background: url(../images/bg-image.jpg) #3c135fbf;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-blend-mode: multiply;
+}
+
+.login-auth{
+    background: #fff;
+    padding: 5px 25px;
+    height: 547px;
+}
+
+.auth-btns{
+    background: #3c135f;
+    color: #fff;
+}
+.auth-btns:hover{
+    color: #fff;
+}
+.auth-form-group-custom .auti-custom-input-icon{
+    color: #3c135f;
+}
+
+.form-check-input:checked{
+    background: #3c135f;
+    border-color: #3c135f;
+}
+
+.authentication-page-content{
+    height: auto;
+}
+/* 
+.auth-header{
+    background: #3c135fbf;
+} */

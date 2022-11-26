@@ -1,0 +1,105 @@
+{% extends 'user_dir/base.html' %}
+{% load static %}
+{% block content %}
+    <!-- =========Account Dashboard Menu============= -->
+    <section class="p-4 main-dashboard">
+        <div class="row mx-auto">
+            <div class="col-lg-3">
+                <div class="account-content">
+                    <div class="account-dashboard">
+                        <strong>ACCOUNT DASHBOARD</strong><span style="float:right; cursor:pointer;"><i id="menuToggle"
+                                                                                                        class="fas fa-minus"></i></span>
+                    </div>
+                    <div class="user-menu" id="UserMenu">
+                        <ul>
+                <li class="current" ><a href="/myaccount">Account Dashboard</a></li>
+                <li class="nav-item "><a href="/address-book">Address Book</a></li>
+                <li class="nav-item"><a href="/account_information">Account Information</a></li>
+                <li class="nav-item "><a href="/myorder">My Order</a></li>
+                <li class="nav-item"><a href="products-purchased.php">Previously Bought</a></li>
+                <li class="nav-item "><a href="wishlist.php">My Wishlist</a></li>
+                <li class="nav-item "><a href="customer-cards.php">My Saved Cards</a></li>
+
+                        </ul>
+                    </div>
+                    <div class="account-dashboard">
+                        <strong>MY ACCOUNT</strong>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-9">
+                <div>
+                    <h3>MY ACCOUNT</h3>
+                    <div class="account-info">
+                        <h4 class="account-information">Account Information</h4>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="ctc-information">
+                                    <h4>Contact Information</h4>
+                                    {% for cust in customer %}
+                                        <h5>{{ cust.first_name }} {{ cust.last_name }}</h5>
+                                        <h5>{{ cust.email }}</h5>
+                                    {% endfor %}
+                                    <a href="/account_information">Edit</a> |
+                                    <a href="/account_information">Change Password</a>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="account-info">
+                        <h4 class="account-information">Address Book <span><a href="">Manage Addresses</a></span></h4>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="ctc-information">
+                                    <h4>Default Billing Address</h4>
+                                    <h5>You have not set a default billing address.</h5>
+
+                                    <a href="">Edit Address</a>
+
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="ctc-information">
+                                    {% for add in address %}
+                                        {% if add.address1 == '' %}
+                                    <h4>Default Shipping Address</h4>
+                                    <h5>You have not set a default shipping address.</h5>
+                                        {% else %}
+                                        <h5>{{ add.address1 }} {{ add.address2 }}</h5>
+                                        <h5>{{ add.address3 }} {{ add.country }} {{ add.state }} {{ add.city }}</h5>
+                                        <h5></h5>
+                                        <h6>{{ cust.phone }}</h6>
+                                        {% endif %}
+                                    {% endfor %}
+                                    <a href="/address-book">Edit Address</a>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="row mx-auto">
+            <div class="col-lg-3">
+                <div class="account-content">
+
+                    <div class="account-dashboard">
+                        <strong>MY WISH LIST</strong>
+                    </div>
+                    <div class="compare-products">
+                        <h6>You have no items in your wish list.</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========Account Dashboard Menu============= -->
+
+{% endblock %}

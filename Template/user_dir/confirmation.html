@@ -1,0 +1,101 @@
+{% extends 'user_dir/base.html' %}
+{% load static %}
+{% load cart %}
+{% load custom_filter %}
+
+{% block content %}
+  <section class="productSingle">
+    <div class="container-fluid">
+      <div class="row mx-auto">
+        <div class="col-md-12">
+          <div class="breadcrumb">
+            <a href="/">Home</a>
+
+            <span class="arrow">
+              <i class="fa fa-angle-right" aria-hidden="true"></i>
+            </span>
+
+            <span class="lang1">Confirmation</span>
+          </div>
+        </div>
+      </div>
+      <div class="row mx-auto">
+        <div class="col-md-12">
+          <header class="page-header">
+            <h2 data-translate="cart.general.title">Confirmation</h2>
+          </header>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =======checkout started===== -->
+  <section class="checkoutSection">
+    <div class="container-fluid">
+      <div class="row mx-auto">
+        <div class="col-lg-12">
+          <div class="step-title" data-role="title">
+            <i class="fas fa-check-square"></i>
+            <span>ORDER SUMMARY</span>
+          </div>
+          <div class="row mx-auto">
+            <div class="col-md-12 mb-5">
+              <div class="mt-4 mb-4 productsInCart orderconfirmation">
+                <p>Order Number : <span>{{ order_id }}</span></p>
+              </div>
+              <div class="productTable">
+                <table width="100%">
+                  <thead>
+
+                    <tr>
+                      <th width="40%">Product Name</th>
+                      <th width="20%">Price</th>
+                      <th width="20%">Qty</th>
+                      <th width="20%">Subtotal</th>
+                    </tr>
+
+                  </thead>
+                  <tbody>
+                  {% for o in order_data %}
+                    <tr style="border: 1px solid #c2c2c2">
+                      <td class="">
+                        <img src="{{ o.product.image }}" alt="" width="100" height="100" />
+                        <a href="">{{ o.product}}</a>
+                      </td>
+                      <td style="text-align: center">
+                        <div class="d-flex justify-content-center align-items-center">
+                          {{ o.price }}
+
+                        </div>
+                      </td>
+                        <td style="text-align: center">
+                        <div class="d-flex justify-content-center align-items-center">
+                         {{ o.quantity }}
+                        </div>
+                      </td>
+                      <td style="text-align: center">{% widthratio o.price 1 o.quantity %}</td>
+                    </tr>
+                  {% endfor %}
+                    <!-- ============Product Row========== -->
+
+                    <tr class="forborder">
+                      <td></td>
+                      <td class="fl-right" style="font-weight: bold; font-size: large">
+                        Order Total
+                      </td>
+                      <td class="fl-right" style="font-weight: bold; font-size: large">
+                        PKR {{ order_total }}
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- =======checkout end===== -->
+
+{% endblock %}

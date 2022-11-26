@@ -1,0 +1,99 @@
+{% extends 'user_dir/base.html' %}
+{% load static %}
+{% block content %}
+
+
+<section class="p-4 main-dashboard">
+<div class="row mx-auto">
+<div class="col-lg-3">
+    <div class="account-content">
+        <div class="account-dashboard">
+            <strong>ACCOUNT DASHBOARD</strong><span style="float:right; cursor:pointer;" ><i id="menuToggle" class="fas fa-minus"></i></span>
+        </div>
+        <div class="user-menu" id="UserMenu">
+            <ul>
+                <li class=""><a href="/myaccount">Account Dashboard</a></li>
+                <li class="nav-item current"><a href="/address-book">Address Book</a></li>
+                <li class="nav-item"><a href="/account_information">Account Information</a></li>
+                <li class="nav-item "><a href="orders.php">My Order</a></li>
+                <li class="nav-item"><a href="products-purchased.php">Previously Bought</a></li>
+                <li class="nav-item "><a href="wishlist.php">My Wishlist</a></li>
+                <li class="nav-item "><a href="customer-cards.php">My Saved Cards</a></li>
+
+            </ul>
+        </div>
+         <div class="account-dashboard">
+            <strong>MY ACCOUNT</strong>
+        </div>
+   </div>
+</div>
+<div class="col-lg-9">
+    <div>
+        <h3>ADD NEW ADDRESS</h3>
+        <div class="account-info">
+            <h4 class="account-information">Contact Information</h4>
+            <form action="/ship_address" method="post">
+            {% csrf_token %}
+            <div class="row">
+    {% for cust in customer %}
+                <div class="col-md-6">
+                    <div class="contact-fields">
+                        <label for="fname">First Name</label><input type="text" value="{{ cust.first_name }}" name="ship_fname" id="">
+{#                        <label for="Company">Company</label><input type="text" name="" id="">#}
+                        <label for="phone">Phone Number</label><input type="number" maxlength="11" name="ship_phone" value="{{ cust.phone }}" id="" required PLACEHOLDER="03121234567">
+                         <label for="street">Street Address</label><input type="text" name="ship_street" maxlength="50" value="{{ cust.shipping_address }}" id="">
+                         <label for="street">Street Address #1</label><input type="text" maxlength="50" name="ship_street1" id="">
+                         <label for="street">Street Address #2</label><input type="text" maxlength="50" name="ship_street2" id="">
+{#                         <label for="code">CRO Code If Applicable</label><input type="text" name="" id="">#}
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="contact-fields">
+                        <label for="lname">Last Name</label><input type="text" name="ship_lname" value="{{ cust.last_name }}" id="">
+                        <label for="Company">Country</label>
+                        <select name="country" class="countries" id="countryId">
+                            <option value="">Select Country</option>
+                        </select>
+                        <label for="State">State/Province</label>
+                        <select name="state" class="states" id="stateId">
+                            <option value="">Select State</option>
+                        </select>
+                         <label for="city">City</label>
+                         <select name="city" class="cities" id="cityId">
+                            <option value="">Select City</option>
+                         </select>
+{#                         <label for="area">City Area</label><input type="text" name="city_area" id="">#}
+
+                         <label for="code">Zip/Postal Code</label><input type="number" name="ship_zipcode" id="">
+                    </div>
+                </div>
+                <div class="contact-fields">
+                    <input type="submit" value="SAVE ADDRESS">
+                </div>
+    {% endfor %}
+</form>
+            </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+</div>
+</div>
+<div class="row mx-auto">
+    <div class="col-lg-3">
+    <div class="account-content">
+
+         <div class="account-dashboard">
+            <strong>MY WISH LIST</strong>
+        </div>
+        <div class="compare-products">
+            <h6>You have no items in your wish list.</h6>
+        </div>
+   </div>
+</div>
+</div>
+</section>
+
+
+{% endblock %}
